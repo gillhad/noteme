@@ -7,10 +7,10 @@ class Folders{
   late String title;
   late Color color;
   late DateTime updateTime;
+  late String image;
   bool pinned = false;
   late List<NoteClass> notes;
   ///Folder blocked by password
   bool blocked = false;
   String? password;
-
 }

@@ -3,14 +3,30 @@ import 'package:flutter/material.dart';
 class AppColors{
 
   ///dark
-  static Color backgroundDark = const Color(0xFFFFFFFF);
+  static Color backgroundDark = const Color(0xFF171616);
   static Color greyDark = const Color(0xFFFFFFFF);
-  static Color onBackgroundDark = const Color(0xFFFFFFFF);
+  static Color onBackgroundDark = const Color(0xFF83D376);
+  static Color primaryDark = const Color(0xFF9CCB7D);
+  static Color onPrimaryDark = const Color(0xFF1F5B15);
+  static Color secondaryDark = const Color(0xFFC03030);
+  static Color onSecondaryDark = const Color(0xFFC03030);
+  static Color surfaceDark = const Color(0xFFC03030);
+  static Color onSurfaceDark = const Color(0xFFC03030);
+  static Color errorDark = const Color(0xFFC03030);
+  static Color onErrorDark = const Color(0xFFC03030);
 
   ///Light
   static Color backgroundLight = const Color(0xFFFFFFFF);
   static Color grey = const Color(0xFFFFFFFF);
-  static Color onBackground = const Color(0xFFFFFFFF);
+  static Color onBackground = const Color(0xFF346456);
+  static Color primary = const Color(0xFF346456);
+  static Color onPrimary = const Color(0xFF346456);
+  static Color secondary = const Color(0xFF346456);
+  static Color onSecondary = const Color(0xFF346456);
+  static Color surface = const Color(0xFF346456);
+  static Color onSurface = const Color(0xFF346456);
+  static Color error = const Color(0xFF346456);
+  static Color onError = const Color(0xFF346456);
 
   ///NoteColors
   ///dark

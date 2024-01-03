@@ -1,6 +1,9 @@
 {
-"@@locale":"es"
+"@@locale":"es",
 
 
+
+"@@_MAIN":{},
+"main_title":"NoteMe"
 
 }

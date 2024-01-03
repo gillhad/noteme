@@ -1,31 +1,47 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:noteme/src/config/app_styles.dart';
+import 'package:noteme/src/ui/screens/settings/settings.dart';
 
-class MainHolder extends StatefulWidget {
-  const MainHolder({super.key});
+import '../../config/providers.dart';
+import '../widgets/bottom_navigation.dart';
+import 'notes/home.dart';
+
+class MainHolder extends ConsumerWidget {
+   MainHolder({super.key});
+
+   int barIndex = 0;
+ final List<Widget> screens = [ Home(), Settings()];
 
   @override
-  State<MainHolder> createState() => _MainHolderState();
-}
-
-class _MainHolderState extends State<MainHolder> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var isDarkMode = ref.watch(settingsProvider);
     return Scaffold(
-      appBar: _appBar(),
-      body: _content(),
+      body: _content(ref),
+      bottomNavigationBar: _bottomNavigationBar(ref),
 
     );
   }
-AppBar _appBar(){
-    return AppBar();
-}
 
-  Widget _content(){
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-        ],
-      ),
-    );
-  }
+    Widget _content(ref) {
+      return screens[ref.watch(mainHolderProvider)];
+    }
+
+    Widget _bottomNavigationBar(ref) {
+      return BottomNavigationBar(
+        currentIndex: barIndex,
+          onTap: (index) {
+              ref.read(mainHolderProvider.notifier).state = index;
+              barIndex = ref.watch(mainHolderProvider);
+          },
+          items: [
+            CustomBottombarItem(icon: Icon(Symbols.ac_unit), label: "Home"),
+            CustomBottombarItem(
+                icon: Icon(Symbols.settings), label: "Settings"),
+          ]);
+    }
+
 }
