@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noteme/src/config/app_styles.dart';
+import 'package:noteme/src/config/navigation/navigation_router.dart';
 
 class NoteMe extends StatefulWidget {
   const NoteMe({super.key});
@@ -8,8 +10,15 @@ class NoteMe extends StatefulWidget {
 }
 
 class _NoteMeState extends State<NoteMe> {
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp.router(
+      routerConfig: router,
+      theme: AppTheme.mainTheme,
+      themeMode: ThemeMode.system,
+
+    );
   }
 }
