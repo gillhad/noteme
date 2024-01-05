@@ -19,6 +19,7 @@ class MainHolder extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkMode = ref.watch(settingsProvider);
+    print(barIndex);
     return Scaffold(
       body: _content(ref),
       bottomNavigationBar: _bottomNavigationBar(ref),

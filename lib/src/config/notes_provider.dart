@@ -6,7 +6,6 @@ class ItemNotifier extends ChangeNotifier{
 
   addItem(item){
     itemsList.add(item);
-    print("añadido un item");
   }
 
 }

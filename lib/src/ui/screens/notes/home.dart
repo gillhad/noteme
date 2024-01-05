@@ -107,7 +107,7 @@ class Home extends ConsumerStatefulWidget {
     return FloatingActionButton(
       onPressed: () {
         ///TODO: Create new note
-        UserHelper.user!.simpleMode = !UserHelper.user!.simpleMode;
+        UserHelper.user!.settings.simpleMode = !UserHelper.user!.settings.simpleMode;
 
         setState(() {
 

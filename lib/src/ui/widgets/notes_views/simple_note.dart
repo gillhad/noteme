@@ -11,26 +11,22 @@ import 'package:noteme/src/models/note_model.dart';
 import '../../../models/user.dart';
 
 ///Views for different notes in the home page
-
 Widget noteItem(context,NoteClass note,WidgetRef ref){
-  print("repintamos");
  User? user =  ref.watch(userState);
- print("user?.simpleMode");
- print(user?.simpleMode);
   return GestureDetector(
     onTap: (){
       //TODO: abrir la nota
     },
     child: Container(
       width: MediaQuery.of(context).size.width,
-      height: user!.simpleMode ? 50 : 100,
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: user!.simpleMode ? 0 : 10 ),
+      height: user!.settings.simpleMode ? 50 : 100,
+      padding: EdgeInsets.symmetric(horizontal: 10,vertical: user.settings.simpleMode ? 0 : 10 ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
     border: Border.all(color: AppColors.noDarkColor)
       ),
       child: Row(
-        crossAxisAlignment: !user.simpleMode ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+        crossAxisAlignment: !user.settings.simpleMode ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.all(5),
@@ -41,14 +37,14 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
               child: Column(
-                mainAxisAlignment: !user.simpleMode ? MainAxisAlignment.start : MainAxisAlignment.center,
+                mainAxisAlignment: !user.settings.simpleMode ? MainAxisAlignment.start : MainAxisAlignment.center,
                 children: [
                   Text(
                     longString,
                     maxLines: 1,
                     // note.title,
                     style: textTheme.headlineSmall,),
-                  if(!user.simpleMode)Flexible(child: Text(longString))
+                  if(!user.settings.simpleMode)Flexible(child: Text(longString))
                 ],
               ),
             ),
