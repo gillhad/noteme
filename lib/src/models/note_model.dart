@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+
+
 class NoteClass{
 late int id;
 late String title;
@@ -16,4 +18,7 @@ DateTime? reminderTime;
 late DateTime updateTime;
 late DateTime creationTime;
 DateTime? deleteTime;
+
+NoteClass({required this.id, required this.title});
+
 }

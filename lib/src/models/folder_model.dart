@@ -13,4 +13,6 @@ class Folders{
   ///Folder blocked by password
   bool blocked = false;
   String? password;
+  Folders(this.title);
+
 }

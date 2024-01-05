@@ -8,11 +8,11 @@ class AppColors{
   static Color onBackgroundDark = const Color(0xFF83D376);
   static Color primaryDark = const Color(0xFF9CCB7D);
   static Color onPrimaryDark = const Color(0xFF1F5B15);
-  static Color secondaryDark = const Color(0xFFC03030);
-  static Color onSecondaryDark = const Color(0xFFC03030);
-  static Color surfaceDark = const Color(0xFFC03030);
-  static Color onSurfaceDark = const Color(0xFFC03030);
-  static Color errorDark = const Color(0xFFC03030);
+  static Color secondaryDark = const Color(0xFFACB06F);
+  static Color onSecondaryDark = const Color(0xFF70C7B3);
+  static Color surfaceDark = const Color(0xFF24326C);
+  static Color onSurfaceDark = const Color(0xFFA16AD5);
+  static Color errorDark = const Color(0xFF99479F);
   static Color onErrorDark = const Color(0xFFC03030);
 
   ///Light

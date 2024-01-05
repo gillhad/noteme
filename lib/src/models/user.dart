@@ -10,4 +10,6 @@ class User{
   bool simpleMode = false;
   bool notifications =  true;
 
+
+
 }
