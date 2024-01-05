@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/app.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/ui/screens/main_holder.dart';
+import 'package:noteme/src/ui/screens/settings/settings_conf.dart';
 
 final router = GoRouter(
     routes: [
@@ -10,6 +11,12 @@ final router = GoRouter(
         builder:(context, state) {
           return MainHolder();
         }
+      ),
+      GoRoute(
+          path: routes.settingsConf,
+          builder:(context, state) {
+            return SettingsConf();
+          }
       ),
     ]
 

@@ -1,9 +1,22 @@
 {
 "@@locale":"es",
 
-
+"@@_COMMON":"",
+"delete":"Eliminar",
 
 "@@_MAIN":{},
-"main_title":"NoteMe"
+"main_title":"NoteMe",
+
+
+"@@_SETTINGS":{},
+"settings":"Ajustes",
+"setttings_conf":"Configuración",
+"settings_not":"Notificaciones",
+"settings_theme":"Temas",
+"settings_info":"Información",
+"settings_fdb":"Feedback",
+"settings_conf_view":"Configurar vista",
+"settings_conf_viewMode":"Activar vista simple",
+"settings_conf_light":"Activar modo oscuro"
 
 }

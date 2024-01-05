@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+import 'package:noteme/src/config/navigation/navigation_routes.dart';
+
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -38,11 +42,11 @@ class _SettingsState extends State<Settings> {
           Text("Nombre del usuario"),
 SizedBox(height: 40,),
 _notSwitch(),
-    _settingsOption("Configuración"),
-    _settingsOption("Temas"),
-    _settingsOption("Info"),
-    _settingsOption("Feedback"),
-    _settingsOption("Eliminar"),
+    _settingsOption(AL.of(context).setttings_conf,_navigation),
+    _settingsOption(AL.of(context).settings_theme,_navigation),
+    _settingsOption(AL.of(context).settings_info,_navigation),
+    _settingsOption(AL.of(context).settings_fdb,_navigation),
+    _settingsOption(AL.of(context).delete,_navigation),
     //Notificaciones
     //Opciones
     //Temas
@@ -58,7 +62,7 @@ _notSwitch(),
       height: 40,
       margin: EdgeInsets.symmetric(vertical: 8),
       child: Row(children: [
-        Expanded(child: Text("Notificaciones")),
+        Expanded(child: Text(AL.of(context).settings_not)),
         Switch(value: _notificationStatus, onChanged: (value){
           setState(() {
             _notificationStatus = value;
@@ -68,9 +72,9 @@ _notSwitch(),
     );
   }
 
-  _settingsOption(label){
+  _settingsOption(label,nav){
     return GestureDetector(
-      onTap: _navigation("tip"),
+      onTap: nav,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 40,
@@ -85,8 +89,8 @@ _notSwitch(),
     );
   }
   
-  _navigation(route){
-    
+  _navigation(){
+    GoRouter.of(context).push(routes.settingsConf);
   }
 
 }

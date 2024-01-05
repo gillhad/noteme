@@ -91,11 +91,71 @@ abstract class AL {
     Locale('es')
   ];
 
+  /// No description provided for @delete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar'**
+  String get delete;
+
   /// No description provided for @main_title.
   ///
   /// In es, this message translates to:
   /// **'NoteMe'**
   String get main_title;
+
+  /// No description provided for @settings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ajustes'**
+  String get settings;
+
+  /// No description provided for @setttings_conf.
+  ///
+  /// In es, this message translates to:
+  /// **'Configuración'**
+  String get setttings_conf;
+
+  /// No description provided for @settings_not.
+  ///
+  /// In es, this message translates to:
+  /// **'Notificaciones'**
+  String get settings_not;
+
+  /// No description provided for @settings_theme.
+  ///
+  /// In es, this message translates to:
+  /// **'Temas'**
+  String get settings_theme;
+
+  /// No description provided for @settings_info.
+  ///
+  /// In es, this message translates to:
+  /// **'Información'**
+  String get settings_info;
+
+  /// No description provided for @settings_fdb.
+  ///
+  /// In es, this message translates to:
+  /// **'Feedback'**
+  String get settings_fdb;
+
+  /// No description provided for @settings_conf_view.
+  ///
+  /// In es, this message translates to:
+  /// **'Configurar vista'**
+  String get settings_conf_view;
+
+  /// No description provided for @settings_conf_viewMode.
+  ///
+  /// In es, this message translates to:
+  /// **'Activar vista simple'**
+  String get settings_conf_viewMode;
+
+  /// No description provided for @settings_conf_light.
+  ///
+  /// In es, this message translates to:
+  /// **'Activar modo oscuro'**
+  String get settings_conf_light;
 }
 
 class _ALDelegate extends LocalizationsDelegate<AL> {
