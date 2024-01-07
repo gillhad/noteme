@@ -15,12 +15,17 @@ class NoteMe extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      localizationsDelegates: AL.localizationsDelegates,
-      supportedLocales: AL.supportedLocales,
-      routerConfig: router,
-      theme: appTheme(context,ref.watch(settingsProvider)),
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).focusedChild?.unfocus();
+      },
+      child: MaterialApp.router(
+        localizationsDelegates: AL.localizationsDelegates,
+        supportedLocales: AL.supportedLocales,
+        routerConfig: router,
+        theme: appTheme(context,ref.watch(settingsProvider)),
 
+      ),
     );
   }
 }

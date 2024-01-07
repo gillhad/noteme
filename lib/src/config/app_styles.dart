@@ -19,7 +19,10 @@ ThemeData appTheme(BuildContext context,bool isDarkTheme ){
   appBarTheme: AppBarTheme(
       backgroundColor: isDarkTheme ? AppColors.backgroundDark : AppColors.backgroundLight,
     titleTextStyle: textTheme.headlineMedium,
-  )
+  ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: InputBorder.none
+    )
   );
 }
 

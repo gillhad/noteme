@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/app_styles.dart';
+import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/providers.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/note_model.dart';
@@ -107,12 +109,7 @@ class Home extends ConsumerStatefulWidget {
     return FloatingActionButton(
       onPressed: () {
         ///TODO: Create new note
-        UserHelper.user!.settings.simpleMode = !UserHelper.user!.settings.simpleMode;
-
-        setState(() {
-
-        });
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("añadir nota")));
+        GoRouter.of(context).push(routes.noteView,extra: null);
       },
       child: Icon(
         Icons.add,
@@ -124,7 +121,6 @@ class Home extends ConsumerStatefulWidget {
 
   showItem(context,WidgetRef ref,index){
   ref.watch(userState);
-  print("repitnar");
     if(itemsList[index] is NoteClass) {
       return noteItem(context, itemsList[index], ref);
     }else{
