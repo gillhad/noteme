@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="add configuratio view&#10;- dark mode&#10;- light mode">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Add create notes view">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/config/app_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_styles.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704452331985</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add create notes view">
+      <option name="closed" value="true" />
+      <created>1704620252536</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704620252536</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -181,6 +185,7 @@
     <MESSAGE value="create widget for folder and note" />
     <MESSAGE value="create settings view&#10;add settingsmodel" />
     <MESSAGE value="add configuratio view&#10;- dark mode&#10;- light mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="add configuratio view&#10;- dark mode&#10;- light mode" />
+    <MESSAGE value="Add create notes view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add create notes view" />
   </component>
 </project>
