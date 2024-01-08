@@ -7,6 +7,7 @@ class Folders{
   late String title;
   late Color color;
   late DateTime updateTime;
+  late DateTime createTime;
   late String image;
   bool pinned = false;
   late List<NoteClass> notes;
