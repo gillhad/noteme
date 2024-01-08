@@ -11,6 +11,12 @@ class ALEs extends AL {
   String get main_title => 'NoteMe';
 
   @override
+  String get home_add_new_note => 'Nueva nota';
+
+  @override
+  String get home_add_new_folder => 'Nueva carpeta';
+
+  @override
   String get settings => 'Ajustes';
 
   @override

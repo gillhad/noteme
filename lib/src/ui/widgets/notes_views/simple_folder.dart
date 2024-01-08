@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/models/folder_model.dart';
 
 import '../../../config/app_colors.dart';
@@ -11,11 +13,11 @@ import '../../../config/globals.dart';
 import '../../../config/providers.dart';
 import '../../../models/user.dart';
 
-Widget folderItem(context,Folders folder,WidgetRef ref){
+Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
     User? user =  ref.watch(userState);
     return GestureDetector(
       onTap: (){
-        //TODO: abrir la nota
+        openFolder(folder);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -30,7 +32,7 @@ Widget folderItem(context,Folders folder,WidgetRef ref){
           children: [
             Container(
                 padding: const EdgeInsets.all(5),
-                child: Icon(Icons.folder)),
+                child: const Icon(Icons.folder)),
             const SizedBox(width: 10,),
             Expanded(
               flex: 10,

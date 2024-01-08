@@ -103,6 +103,18 @@ abstract class AL {
   /// **'NoteMe'**
   String get main_title;
 
+  /// No description provided for @home_add_new_note.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva nota'**
+  String get home_add_new_note;
+
+  /// No description provided for @home_add_new_folder.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva carpeta'**
+  String get home_add_new_folder;
+
   /// No description provided for @settings.
   ///
   /// In es, this message translates to:

@@ -8,7 +8,8 @@ import 'package:noteme/src/models/note_model.dart';
 
 class NoteView extends ConsumerStatefulWidget {
   final NoteClass? note;
- const NoteView({this.note,super.key});
+  final int? folderId;
+ const NoteView({this.note,this.folderId,super.key});
 
   @override
   ConsumerState<NoteView> createState() => _NoteViewState();
@@ -24,6 +25,13 @@ class NoteView extends ConsumerStatefulWidget {
   void initState() {
     initNote();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _noteController.dispose();
+    super.dispose();
   }
 
   @override
@@ -48,8 +56,14 @@ class NoteView extends ConsumerStatefulWidget {
           ],
         ),
       ),
-      leading: Container(),
-      leadingWidth: 0,
+      leading: IconButton(
+        padding: EdgeInsets.zero,
+        onPressed: (){
+          GoRouter.of(context).pop();
+        },
+        icon: Icon(Icons.chevron_left, size: 30,),
+      ),
+      leadingWidth: 20,
       elevation: 4,
       actions: [
         _saveNote()
@@ -93,6 +107,7 @@ class NoteView extends ConsumerStatefulWidget {
         alignment: Alignment.center,
         margin: const EdgeInsets.symmetric(vertical: 3),
         child: TextFormField(
+          controller: _titleController,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 10),
             fillColor: AppColors.secondaryDark,
@@ -113,9 +128,12 @@ class NoteView extends ConsumerStatefulWidget {
   }
 
   ///FUNCTIONS
-  initNote(){
+   initNote(){
+    print(widget.note);
     if(widget.note!=null){
       currentNote = widget.note;
+      print(currentNote!.content);
+      print(currentNote!.title);
       _titleController.text = currentNote?.title ?? "";
       _noteController.text = currentNote?.content ?? "";
     }
@@ -127,7 +145,7 @@ class NoteView extends ConsumerStatefulWidget {
       if(_checkIfEmpty()){
         //TODO: create&save note
       }else {
-        GoRouter.of(context).go(routes.home);
+        GoRouter.of(context).go(routes.mainHolder);
       }
     }, icon: widget.note !=null ? const Icon(Icons.edit) : const Icon(Icons.save));
   }

@@ -7,6 +7,9 @@
 "@@_MAIN":{},
 "main_title":"NoteMe",
 
+"@@_HOME":{},
+"home_add_new_note":"Nueva nota",
+"home_add_new_folder":"Nueva carpeta",
 
 "@@_SETTINGS":{},
 "settings":"Ajustes",
