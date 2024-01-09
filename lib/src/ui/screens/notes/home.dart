@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
+import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/app_styles.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
@@ -13,6 +16,7 @@ import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_folder.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_note.dart';
+import 'package:noteme/src/utils/helpers/database_helper.dart';
 import 'package:noteme/src/utils/helpers/user_helper.dart';
 
 import '../../../models/user.dart';
@@ -27,9 +31,6 @@ class Home extends ConsumerStatefulWidget {
 
 class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   var _searchController = TextEditingController();
-
-  NoteClass exampleNote = NoteClass(id: 0, title: "title", content: "");
-  Folders folder = Folders(title: "folder",notes: [NoteClass(id: 1,title: "Dentro del folder",content: "Con texto")]);
 
   Folders? _currentFolder;
 
@@ -249,10 +250,15 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   ///FUNCTIONS
 
-  initList() {
+  initList() async{
     //TODO: read db and create first list
+    await addExampleItems();
     if (itemsList.isEmpty) {
-      itemsList = [exampleNote, exampleNote, folder, exampleNote];
+      var response = await DataBaseHelper.getAll();
+      print("response");
+      print(response);
+      itemsList.addAll(response);
+      itemsList.addAll(response);
     }
     showList.addAll(itemsList);
     setState(() {});
@@ -278,7 +284,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     setState(() {
     _currentFolder = folder;
     showList.clear();
-    showList.addAll(_currentFolder!.notes);
+    // showList.addAll(_currentFolder!.notes);
     });
   }
 

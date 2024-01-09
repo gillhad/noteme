@@ -10,10 +10,10 @@ late int id;
 late String title;
 late String content;
 String? tag;
-late Color color;
+Color? color;
 Icon? icon;
-late bool hidden;
-late bool pinned;
+bool hidden = false;
+bool pinned = false;
 int? folderId;
 File? background;
 DateTime? reminderTime;
@@ -21,7 +21,28 @@ DateTime? updateTime;
 late DateTime creationTime;
 DateTime? deleteTime;
 
-NoteClass({required this.id, required this.title,required this.content});
+NoteClass({required this.title,required this.content, required this.creationTime});
+
+NoteClass.fromJson(json){
+  print("id type");
+  print(json);
+  print(json["id"].runtimeType);
+  id = json["id"];
+  title = json["title"];  
+  content = json["content"];  
+  tag = json["tag"];
+  color = json["color"];
+  icon = json["icon"];
+  hidden = json["hidden"] == 1 ? true :false;
+  pinned = json["pinned"]  == 1 ? true :false;
+  folderId = json["folder_id"];
+  background = json["background"];
+  reminderTime = json["reminder_time"];
+  updateTime = json["update_time"]; 
+  creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
+  deleteTime = json["delete_time"];
+  
+}
 
 toMap(){
   Map<String,dynamic> map = {
@@ -30,8 +51,8 @@ toMap(){
     "tag":tag,
     "color":color,
     "icon":icon,
-    "hidden":hidden,
-    "pinned":pinned,
+    "hidden":hidden ? 1 : 0,
+    "pinned":pinned ? 1 : 0,
     "folder_id":folderId,
     "background":background,
     "reminder_time":TimeManager.dateTimeToDB(reminderTime),

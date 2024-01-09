@@ -6,18 +6,30 @@ import 'note_model.dart';
 class Folders {
   late int id;
   late String title;
-  late Color color;
-  late DateTime updateTime;
+   Color? color;
+   DateTime? updateTime;
   late DateTime creationTime;
   late String image;
   bool pinned = false;
-  late List<NoteClass> notes;
+  List<NoteClass>? notes;
 
   ///Folder blocked by password
   bool blocked = false;
   String? password;
 
-  Folders({required this.title, required this.notes});
+  Folders({required this.title,required this.creationTime});
+
+   Folders.fromJson(Map<String,dynamic> json){
+     print("id type");
+     print(json["id"].runtimeType);
+    id = json["id"];
+    title = json["title"];
+    color = json["color"];
+    updateTime = json["update_time"];
+    creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
+    image = json["image"];
+    pinned = json["pinned"];
+  }
 
   toMap() {
     Map<String, dynamic> map = {
@@ -26,7 +38,7 @@ class Folders {
       "update_time":TimeManager.dateTimeToDB(updateTime),
       "creation_time":TimeManager.dateTimeToDB(updateTime),
       "image":image,
-      "pinned":pinned
+      "pinned":pinned ? 1: 0
     };
     return map;
   }

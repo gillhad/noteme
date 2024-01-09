@@ -21,7 +21,7 @@ void main() async{
   databaseFactory.deleteDatabase(path);
 
   DatabaseInfo.setDatabase(await openDatabase("demo.db", version: 1,onCreate: (Database db, int version){
-onCreateDatabase(db);
+  DatabaseInfo.onCreateDatabase(db);
   }));
 
   SystemChrome.setPreferredOrientations([

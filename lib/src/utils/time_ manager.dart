@@ -1,3 +1,4 @@
+import 'package:intl/date_symbol_data_file.dart';
 import 'package:intl/intl.dart';
 
 class TimeManager{
@@ -12,4 +13,11 @@ class TimeManager{
     date = DateFormat('yyyy-mm-dd hh:mm','es').format(dateTime);
     return date;
   }
+  static DateTime databaseToDateTime(String dateTime){
+    ///Take care of local time for adding hours
+    DateTime date = DateTime.parse(dateTime);
+        // .add(const Duration(hours: 1));
+    return date;
+  }
+
 }
