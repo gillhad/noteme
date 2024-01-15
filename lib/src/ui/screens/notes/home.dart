@@ -10,10 +10,12 @@ import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/app_styles.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
+import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/config/providers.dart';
 import 'package:noteme/src/models/arguments.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/note_model.dart';
+import 'package:noteme/src/utils/dialog_manager.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_folder.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_note.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
@@ -22,7 +24,6 @@ import 'package:noteme/src/utils/helpers/user_helper.dart';
 import '../../../models/user.dart';
 
 class Home extends ConsumerStatefulWidget {
-
   const Home({super.key});
 
   @override
@@ -31,6 +32,7 @@ class Home extends ConsumerStatefulWidget {
 
 class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   var _searchController = TextEditingController();
+  var _folderTitleController = TextEditingController();
 
   Folders? _currentFolder;
 
@@ -47,7 +49,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   @override
   void initState() {
     //TODO: set draweer pos from settings
-      initList();
+    initList();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
@@ -55,6 +57,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   @override
   void dispose() {
     _searchController.dispose();
+    _folderTitleController.dispose();
     super.dispose();
   }
 
@@ -74,8 +77,14 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    // bool simpleMode = ref.watch(userState)!.simpleMode;
-    // print("hay cambios");
+    ref.listen(listProvider, (previous, next) {
+      print("cambios en la lista");
+      print(previous);
+      print(next);
+      showList.clear();
+      showList.addAll(next);
+      setState(() {});
+    });
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: _appBar(context),
@@ -83,6 +92,12 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       drawer: _drawer(context),
       floatingActionButton: _keyboard ? null : _addNew(context),
     );
+  }
+
+  updateShowList() {
+    // print("repintamos las funciones");
+    showList.clear();
+    showList.addAll(itemsList);
   }
 
   AppBar _appBar(context) {
@@ -102,7 +117,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
         ///TODO: add filters
         // Icon(Icons.filter),
         ///TODO: Add extra option
-        Icon(Icons.more_vert),
+        IconButton(
+            onPressed: () async {
+              _reloadList();
+            },
+            icon: Icon(Icons.more_vert)),
       ],
     );
   }
@@ -188,7 +207,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
           borderRadius: BorderRadius.circular(10)),
       child: PopupMenuButton(
         onOpened: () {
-          print("on open");
           // setState(() {
           //
           // });
@@ -199,17 +217,21 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
         ),
         offset: const Offset(0, -120),
         itemBuilder: (context) => [
-          //TODO: send to noteview
           PopupMenuItem(
             onTap: () {
-              GoRouter.of(context).push(routes.noteView,extra: NoteViewArguments(folderId: _currentFolder?.id));
+              GoRouter.of(context).push(routes.noteView,
+                  extra: NoteViewArguments(folderId: _currentFolder?.id));
             },
             child: Text(AL.of(context).home_add_new_note),
           ),
           //TODO: show dialog to create new folder
-          if(_currentFolder==null) PopupMenuItem(
-            child: Text(AL.of(context).home_add_new_folder),
-          ),
+          if (_currentFolder == null)
+            PopupMenuItem(
+              onTap: () {
+                addFolderDialog();
+              },
+              child: Text(AL.of(context).home_add_new_folder),
+            ),
         ],
         child: Icon(
           Icons.add,
@@ -248,28 +270,76 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     );
   }
 
+  addFolderDialog() {
+    return DialogManager().showCustomDialog(context,
+        title: AL.of(context).home_add_folder_title,
+        content: TextFormField(
+          controller: _folderTitleController,
+        ),
+        onCancel: () {
+      GoRouter.of(context).pop();
+        },
+        onAccept: () async{
+      Folders newFolder = Folders(title: _folderTitleController.text, creationTime: DateTime.now());
+      try {
+        await ref.read(listProvider.notifier).add(newFolder);
+        _folderTitleController.clear();
+        GoRouter.of(context).pop();
+      }catch(e){
+
+      }
+
+
+        });
+  }
+
   ///FUNCTIONS
 
-  initList() async{
-    //TODO: read db and create first list
-    await addExampleItems();
-    if (itemsList.isEmpty) {
-      var response = await DataBaseHelper.getAll();
-      print("response");
-      print(response);
-      itemsList.addAll(response);
-      itemsList.addAll(response);
+  initList() async {
+    print("init");
+    try {
+      //TODO: read db and create first list
+      // await addExampleItems();
+      if (itemsList.isEmpty) {
+        // await ref.read(itemsRepository).addNote(NoteClass(title: "nueva", content: "content", creationTime: DateTime.now()));
+      } else {
+        _reloadList();
+      }
+      // print("ordeno la nota");
+      // ref.read(listProvider.notifier).sort();
+      showList.clear();
+      showList.addAll(itemsList);
+      setState(() {});
+    }catch(e){
+      print(e);
     }
+  }
+
+  _reloadList() async {
+    // var response = await DataBaseHelper.getAll();
+    // response.forEach((item){
+    //   if(!itemsList.contains(item)){
+    //     itemsList.add(item);
+    //   }
+    // });
+    showList.clear();
+    print("tenemos items en la lista ${itemsList.length}");
     showList.addAll(itemsList);
-    setState(() {});
   }
 
   showItem(context, WidgetRef ref, index) {
+    // print(showList[0].toString());
+    // print(showList[0].runtimeType);
+    // print(showList[0] is NoteClass);
+    // print(showList.length);
     ref.watch(userState);
     if (showList[index] is NoteClass) {
       return noteItem(context, showList[index], ref);
+    } else if (showList[index] is Folders) {
+      return folderItem(context, showList[index], _openFolder, ref);
     } else {
-      return folderItem(context, showList[index],_openFolder, ref);
+      print(showList[index]);
+      return Container();
     }
   }
 
@@ -280,11 +350,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     showList.addAll(itemsList);
   }
 
-  _openFolder(folder){
+  _openFolder(folder) {
     setState(() {
-    _currentFolder = folder;
-    showList.clear();
-    // showList.addAll(_currentFolder!.notes);
+      _currentFolder = folder;
+      showList.clear();
+      // showList.addAll(_currentFolder!.notes);
     });
   }
 
@@ -295,21 +365,19 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       _searchTimer!.cancel();
     }
     _searchTimer = Timer(const Duration(milliseconds: 500), () {
-
-      for (var item in itemsList) {
-        if (item is NoteClass) {
-          print(item.title);
-          print(item.content);
-          if (item.title.contains(searchString) ||
-              item.content.contains(searchString)) {
-            showList.add(item);
-          }
-        } else {
-          if (item.title.contains(searchString)) {
-            showList.add(item);
-          }
-        }
-      }
+      // for (var item in ref.watch(itemsRepository).itemList) {
+      //   if (item is NoteClass) {
+      //     if (item.title.contains(searchString) ||
+      //         item.content.contains(searchString)) {
+      //       showList.add(item);
+      //     }
+      //   } else {
+      //     if (item.title.contains(searchString)) {
+      //       showList.add(item);
+      //     }
+      //   }
+      // }
+      print("hemos buscado");
       print(showList);
       setState(() {});
     });

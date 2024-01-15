@@ -10,6 +10,7 @@ import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/providers.dart';
 import 'package:noteme/src/models/arguments.dart';
 import 'package:noteme/src/models/note_model.dart';
+import 'package:noteme/src/ui/widgets/dialogs/dialog_manager_note.dart';
 
 import '../../../models/user.dart';
 
@@ -48,7 +49,7 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
                     note.title,
                     maxLines: 1,
                     style: textTheme.headlineSmall,),
-                  if(!user.settings.simpleMode)Flexible(child: Text(note?.content ?? ""))
+                  if(!user.settings.simpleMode)Flexible(child: Text(note.content))
                 ],
               ),
             ),
@@ -56,8 +57,8 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
           const Spacer(flex: 1,),
           Flexible(
             child: Container(
-              child: IconButton(onPressed: (){
-                //TODO: abre opcions com añadir recordatorio,pinear, eliminar o subir posición
+              child: IconButton(onPressed: ()async{
+                await noteOptionsDialog(context,ref,note);
               }, icon: Icon(Icons.more_vert)),
             ),
           )

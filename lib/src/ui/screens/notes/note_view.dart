@@ -2,8 +2,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
+import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/note_model.dart';
 
 class NoteView extends ConsumerStatefulWidget {
@@ -66,7 +68,7 @@ class NoteView extends ConsumerStatefulWidget {
       leadingWidth: 20,
       elevation: 4,
       actions: [
-        _saveNote()
+        _saveNote(ref)
       ],
     );
   }
@@ -140,12 +142,20 @@ class NoteView extends ConsumerStatefulWidget {
   }
 
   ///Shows done/edit option
-  _saveNote(){
-    return IconButton(onPressed: (){
+  _saveNote(WidgetRef ref){
+    return IconButton(onPressed: ()async {
       if(_checkIfEmpty()){
-        //TODO: create&save note
-      }else {
-        GoRouter.of(context).go(routes.mainHolder);
+        NoteClass newNote = NoteClass(title: _titleController.text, content: _noteController.text, creationTime: DateTime.now());
+        try {
+          //TODO: guardar nota
+          await ref.read(listProvider.notifier).add(newNote);
+          GoRouter.of(context).go(routes.mainHolder);
+        }catch(e,s){
+    print(e);
+    print(s);
+        }
+        }else {
+        // GoRouter.of(context).go(routes.mainHolder);
       }
     }, icon: widget.note !=null ? const Icon(Icons.edit) : const Icon(Icons.save));
   }

@@ -8,6 +8,12 @@ class ALEs extends AL {
   String get delete => 'Eliminar';
 
   @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get accept => 'Aceptar';
+
+  @override
   String get main_title => 'NoteMe';
 
   @override
@@ -15,6 +21,9 @@ class ALEs extends AL {
 
   @override
   String get home_add_new_folder => 'Nueva carpeta';
+
+  @override
+  String get home_add_folder_title => 'Añade un título';
 
   @override
   String get settings => 'Ajustes';
@@ -42,4 +51,13 @@ class ALEs extends AL {
 
   @override
   String get settings_conf_light => 'Activar modo oscuro';
+
+  @override
+  String get dialog_add_folder => 'Añadir a carpeta';
+
+  @override
+  String get dialog_delete => 'Eliminar';
+
+  @override
+  String get dialog_reminder => 'Añadir recordatorio';
 }

@@ -9,7 +9,7 @@ class Folders {
    Color? color;
    DateTime? updateTime;
   late DateTime creationTime;
-  late String image;
+  String? image;
   bool pinned = false;
   List<NoteClass>? notes;
 
@@ -20,15 +20,13 @@ class Folders {
   Folders({required this.title,required this.creationTime});
 
    Folders.fromJson(Map<String,dynamic> json){
-     print("id type");
-     print(json["id"].runtimeType);
     id = json["id"];
     title = json["title"];
     color = json["color"];
     updateTime = json["update_time"];
     creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
     image = json["image"];
-    pinned = json["pinned"];
+    pinned = json["pinned"] == 1 ? true : false;
   }
 
   toMap() {
@@ -36,10 +34,25 @@ class Folders {
       "title": title,
       "color": color,
       "update_time":TimeManager.dateTimeToDB(updateTime),
-      "creation_time":TimeManager.dateTimeToDB(updateTime),
+      "creation_time":TimeManager.dateTimeToDB(creationTime),
       "image":image,
       "pinned":pinned ? 1: 0
     };
     return map;
   }
+
+  @override
+  bool operator == (Object other){
+    return identical(this,other) || other is Folders && hashCode == other.hashCode;
+  }
+
+  @override
+  int get hashCode => id;
+
+  @override
+  String toString() {
+    return "title: $title, id:$id";
+  }
+
+
 }

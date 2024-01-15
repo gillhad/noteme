@@ -97,6 +97,18 @@ abstract class AL {
   /// **'Eliminar'**
   String get delete;
 
+  /// No description provided for @cancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get cancel;
+
+  /// No description provided for @accept.
+  ///
+  /// In es, this message translates to:
+  /// **'Aceptar'**
+  String get accept;
+
   /// No description provided for @main_title.
   ///
   /// In es, this message translates to:
@@ -114,6 +126,12 @@ abstract class AL {
   /// In es, this message translates to:
   /// **'Nueva carpeta'**
   String get home_add_new_folder;
+
+  /// No description provided for @home_add_folder_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Añade un título'**
+  String get home_add_folder_title;
 
   /// No description provided for @settings.
   ///
@@ -168,6 +186,24 @@ abstract class AL {
   /// In es, this message translates to:
   /// **'Activar modo oscuro'**
   String get settings_conf_light;
+
+  /// No description provided for @dialog_add_folder.
+  ///
+  /// In es, this message translates to:
+  /// **'Añadir a carpeta'**
+  String get dialog_add_folder;
+
+  /// No description provided for @dialog_delete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar'**
+  String get dialog_delete;
+
+  /// No description provided for @dialog_reminder.
+  ///
+  /// In es, this message translates to:
+  /// **'Añadir recordatorio'**
+  String get dialog_reminder;
 }
 
 class _ALDelegate extends LocalizationsDelegate<AL> {

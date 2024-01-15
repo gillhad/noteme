@@ -24,9 +24,6 @@ DateTime? deleteTime;
 NoteClass({required this.title,required this.content, required this.creationTime});
 
 NoteClass.fromJson(json){
-  print("id type");
-  print(json);
-  print(json["id"].runtimeType);
   id = json["id"];
   title = json["title"];  
   content = json["content"];  
@@ -62,5 +59,19 @@ toMap(){
   };
   return map;
 }
+
+@override
+bool operator == (Object other){
+  return identical(this,other) || other is NoteClass && hashCode == other.hashCode;
+}
+
+  @override
+  int get hashCode => id;
+
+
+@override
+  String toString() {
+    return "title: $title, id:$id";
+  }
 
 }

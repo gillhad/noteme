@@ -3,6 +3,8 @@
 
 "@@_COMMON":"",
 "delete":"Eliminar",
+"cancel":"Cancelar",
+"accept":"Aceptar",
 
 "@@_MAIN":{},
 "main_title":"NoteMe",
@@ -10,6 +12,7 @@
 "@@_HOME":{},
 "home_add_new_note":"Nueva nota",
 "home_add_new_folder":"Nueva carpeta",
+"home_add_folder_title":"Añade un título",
 
 "@@_SETTINGS":{},
 "settings":"Ajustes",
@@ -20,6 +23,11 @@
 "settings_fdb":"Feedback",
 "settings_conf_view":"Configurar vista",
 "settings_conf_viewMode":"Activar vista simple",
-"settings_conf_light":"Activar modo oscuro"
+"settings_conf_light":"Activar modo oscuro",
+
+"@@_DIALOGS":{},
+"dialog_add_folder":"Añadir a carpeta",
+"dialog_delete":"Eliminar",
+"dialog_reminder":"Añadir recordatorio"
 
 }

@@ -16,9 +16,8 @@ void main() async{
   UserHelper.user = User();
   var databasesPath = await getDatabasesPath();
   String path = join(databasesPath, 'demo.db');
-  print(path);
 
-  databaseFactory.deleteDatabase(path);
+  // databaseFactory.deleteDatabase(path);
 
   DatabaseInfo.setDatabase(await openDatabase("demo.db", version: 1,onCreate: (Database db, int version){
   DatabaseInfo.onCreateDatabase(db);
