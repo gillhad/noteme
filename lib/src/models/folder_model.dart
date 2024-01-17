@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/utils/time_%20manager.dart';
 
 import 'note_model.dart';
 
-class Folders {
-  late int id;
-  late String title;
-   Color? color;
-   DateTime? updateTime;
-  late DateTime creationTime;
+class Folders extends ItemModel{
+  // late int id;
+  // late String title;
+  //  Color? color;
+  //  DateTime? updateTime;
+  // late DateTime creationTime;
   String? image;
-  bool pinned = false;
+  // bool pinned = false;
   List<NoteClass>? notes;
 
   ///Folder blocked by password
   bool blocked = false;
   String? password;
 
-  Folders({required this.title,required this.creationTime});
+  Folders({required this.title,required this.creationTime}) : super.fromJson(null);
 
-   Folders.fromJson(Map<String,dynamic> json){
+   Folders.fromJson(json) : super.fromJson(json){
+
     id = json["id"];
     title = json["title"];
     color = json["color"];
@@ -51,7 +53,7 @@ class Folders {
 
   @override
   String toString() {
-    return "title: $title, id:$id";
+    return "title: $title, id:$id, creationTime:$creationTime, updateTime:$updateTime";
   }
 
 

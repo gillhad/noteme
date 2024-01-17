@@ -34,7 +34,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   var _searchController = TextEditingController();
   var _folderTitleController = TextEditingController();
 
-  Folders? _currentFolder;
 
   List<dynamic> itemsList = [];
   List<dynamic> showList = [];
@@ -63,28 +62,28 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   @override
   void didChangeMetrics() {
-    if (MediaQuery.of(Scaffold.of(context).context).viewInsets.bottom > 0) {
-      setState(() {
-        _keyboard = true;
-      });
-    } else {
-      setState(() {
-        _keyboard = false;
-      });
+    if(mounted) {
+      if (MediaQuery
+          .of(Scaffold
+          .of(context)
+          .context)
+          .viewInsets
+          .bottom > 0) {
+        setState(() {
+          _keyboard = true;
+        });
+      } else {
+        setState(() {
+          _keyboard = false;
+        });
+      }
     }
     super.didChangeMetrics();
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(listProvider, (previous, next) {
-      print("cambios en la lista");
-      print(previous);
-      print(next);
-      showList.clear();
-      showList.addAll(next);
-      setState(() {});
-    });
+   updateShowList();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: _appBar(context),
@@ -95,9 +94,20 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   }
 
   updateShowList() {
+    if(showList.isEmpty){
+      showList.addAll(ref.watch(listProvider));
+    }
+    ref.listen(listProvider, (previous, next) {
+      print("cambios en la lista");
+      print(previous);
+      print(next);
+      showList.clear();
+      showList.addAll(next);
+      print(showList.length);
+      setState(() {});
+    });
     // print("repintamos las funciones");
-    showList.clear();
-    showList.addAll(itemsList);
+
   }
 
   AppBar _appBar(context) {
@@ -183,7 +193,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
               color: AppColors.grey,
               size: MediaQuery.of(context).size.width / 7,
             )),
-        if (_currentFolder != null) _drawerFolder()
       ],
     );
   }
@@ -219,13 +228,12 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
         itemBuilder: (context) => [
           PopupMenuItem(
             onTap: () {
-              GoRouter.of(context).push(routes.noteView,
-                  extra: NoteViewArguments(folderId: _currentFolder?.id));
+              GoRouter.of(context).push(routes.noteView);
             },
             child: Text(AL.of(context).home_add_new_note),
           ),
           //TODO: show dialog to create new folder
-          if (_currentFolder == null)
+
             PopupMenuItem(
               onTap: () {
                 addFolderDialog();
@@ -283,7 +291,12 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       Folders newFolder = Folders(title: _folderTitleController.text, creationTime: DateTime.now());
       try {
         await ref.read(listProvider.notifier).add(newFolder);
+        print("ref.watch(listProvider)");
+        print(ref.watch(listProvider));
         _folderTitleController.clear();
+        setState(() {
+
+        });
         GoRouter.of(context).pop();
       }catch(e){
 
@@ -336,9 +349,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     if (showList[index] is NoteClass) {
       return noteItem(context, showList[index], ref);
     } else if (showList[index] is Folders) {
+      print(showList[index]);
       return folderItem(context, showList[index], _openFolder, ref);
     } else {
       print(showList[index]);
+      print("cagada");
       return Container();
     }
   }
@@ -351,11 +366,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   }
 
   _openFolder(folder) {
-    setState(() {
-      _currentFolder = folder;
-      showList.clear();
-      // showList.addAll(_currentFolder!.notes);
-    });
+    GoRouter.of(context).pushNamed(routes.folderView,extra: folder);
   }
 
   _searchItems(searchString) {
@@ -365,21 +376,18 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       _searchTimer!.cancel();
     }
     _searchTimer = Timer(const Duration(milliseconds: 500), () {
-      // for (var item in ref.watch(itemsRepository).itemList) {
-      //   if (item is NoteClass) {
-      //     if (item.title.contains(searchString) ||
-      //         item.content.contains(searchString)) {
-      //       showList.add(item);
-      //     }
-      //   } else {
-      //     if (item.title.contains(searchString)) {
-      //       showList.add(item);
-      //     }
-      //   }
-      // }
-      print("hemos buscado");
-      print(showList);
-      setState(() {});
+      for (var item in ref.watch(listProvider)) {
+        if (item is NoteClass) {
+          if (item.title.contains(searchString) ||
+              item.content.contains(searchString)) {
+            showList.add(item);
+          }
+        } else {
+          if (item.title.contains(searchString)) {
+            showList.add(item);
+          }
+        }
+      }
     });
   }
 
@@ -389,11 +397,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     switch (_drawerPos) {
       case 0:
         initList();
-        _currentFolder = null;
+        // _currentFolder = null;
       case 1:
         showList.addAll(itemsList.where((element) => element is Folders));
         setState(() {
-          _currentFolder = null;
+          // _currentFolder = null;
         });
     }
   }

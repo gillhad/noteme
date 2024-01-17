@@ -34,7 +34,7 @@ class DatabaseInfo {
         // print("actualizamos la lista de items");
         var newNote = await db!.rawQuery('SELECT * FROM notes ORDER BY id DESC LIMIT 1');
         print("devuelvo nota $newNote");
-        return newNote;
+        return NoteClass.fromJson(newNote[0]);
       } catch (e) {
         // print("no se añade nota");
         print(e);
@@ -47,7 +47,7 @@ class DatabaseInfo {
         await db!.insert('folders', folder.toMap());
         var newFolder = await db!.rawQuery('SELECT * FROM folders ORDER BY id DESC LIMIT 1');
         print("devuelvo nota $newFolder");
-        return newFolder;
+        return Folders.fromJson(newFolder[0]);
       } catch (e,s) {
         print(e);
         print(s);
@@ -83,8 +83,12 @@ class DatabaseInfo {
 
    static updateNote(NoteClass note) async{
      try {
+       var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
+       print("Actualizo nota $oldNote");
        await db!.update(
            "notes", note.toMap(), where: 'id = ${note.id}');
+       var newNote = await db!.rawQuery('SELECT * FROM notes WHERE id=  ${note.id}');
+       print("devuelvo nota $newNote");
        return true;
      } catch (e) {
        return false;

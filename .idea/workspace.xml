@@ -4,26 +4,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="read from database&#10;- notes&#10;- folders">
-      <change afterPath="$PROJECT_DIR$/lib/src/models/list_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Create folder&#10;Add note to folder&#10;sort items in list">
+      <change afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/providers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/providers.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704821437428</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Create folder&#10;Add note to folder&#10;sort items in list">
+      <option name="closed" value="true" />
+      <created>1705321026487</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705321026487</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -247,6 +249,7 @@
     <MESSAGE value="create tables for db" />
     <MESSAGE value="create inserts&#10;- notes&#10;- folders&#10;- update note in folder" />
     <MESSAGE value="read from database&#10;- notes&#10;- folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="read from database&#10;- notes&#10;- folders" />
+    <MESSAGE value="Create folder&#10;Add note to folder&#10;sort items in list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create folder&#10;Add note to folder&#10;sort items in list" />
   </component>
 </project>

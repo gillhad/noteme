@@ -26,7 +26,6 @@ class ItemListState extends StateNotifier<List<dynamic>>{
 
   _init() async {
     try {
-      print("carga items de inicio");
       state = await DataBaseHelper.getAll();
       sort();
     }catch(e,s){
@@ -45,23 +44,29 @@ class ItemListState extends StateNotifier<List<dynamic>>{
   Future add(item)async{
     print(state.length);
     if(item is NoteClass) {
-      try {
       var newNote =  await DatabaseInfo.addNewNote(item);
-      state.add(newNote);
-      state = [...state];
-      }catch(e,s){
-        print(e);
-        print(s);
-      }
+      state.insert(0,newNote);
       }else if(item is Folders){
-      print("voy a añadir un folder");
       var newFolder =  await DatabaseInfo.addNewFolder(item);
-      print(newFolder);
-      state.add(newFolder);
-      state= [...state];
+      if(newFolder!=false) {
+        state.insert(0,newFolder);
+      }
     }
+    sort();
+      state= [...state];
+  }
 
-
+  Future update(item)async{
+    if(item is NoteClass){
+      await DatabaseInfo.updateNote(item);
+    }else if(item is Folders){
+      await DatabaseInfo.updateFolder(item);
+    }else{
+      return null;
+    }
+    state[state.indexWhere((listItem) => listItem.id == item.id && listItem.runtimeType == item.runtimeType)] = item;
+    sort();
+    state = [...state];
   }
 
 
@@ -77,25 +82,31 @@ class ItemListState extends StateNotifier<List<dynamic>>{
 
   getFolders(){
     var items =  itemList.whereType<Folders>();
-    print(items.length);
     var newItems = itemList.where((item) => item is Folders);
-    print(newItems);
     return itemList.whereType<Folders>();
   }
 
   sort()async{
-    print("intento ordenar");
-    print(state);
-   final newState = state.sort((a,b){
-      if(a.creationTime.isBefore(b.creationTime)){
-        return 1;
-      }else{
-        return -1;
-      }
+   state.sort((a,b){
+     if(a.updateTime!=null && b.updateTime!=null){
+       if(a.updateTime.isBefore(b.updateTime)){
+         return 1;
+       }else{
+         return -1;
+       }
+     }else{
+       if(a.updateTime==null && b.creationTime!=null){
+         return -1;
+       }else{
+         if(a.creationTime.isBefore(b.creationTime)){
+           return 1;
+         }else{
+           return -1;
+         }
+       }
+     }
     });
    state = [...state];
-    print(itemList);
-    print(state);
   }
 }
 

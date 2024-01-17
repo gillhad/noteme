@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,6 +23,8 @@ class NoteView extends ConsumerStatefulWidget {
   late NoteClass? currentNote;
   var _titleController = TextEditingController();
   var _noteController = TextEditingController();
+
+  Timer? updateTimer;
 
 
   @override
@@ -85,11 +89,17 @@ class NoteView extends ConsumerStatefulWidget {
           ),
           child: TextFormField(
             onTap: (){
-              print(_noteController.selection.base.offset);
+              print("tap en el notecontroller");
+              print("_noteController.selection.base.offset");
             },
             onChanged: (value){
               //TODO: guardar la nota cada X tiempo si se hacen cambios
-              print(_noteController.selection.base.offset);
+              print("_noteController.selection.base.offset");
+              print(widget.note);
+              if(widget.note!=null){
+                print("update");
+                _updateNote();
+              }
             },
             controller: _noteController,
             maxLines: null,
@@ -147,24 +157,47 @@ class NoteView extends ConsumerStatefulWidget {
       if(_checkIfEmpty()){
         NoteClass newNote = NoteClass(title: _titleController.text, content: _noteController.text, creationTime: DateTime.now());
         try {
-          //TODO: guardar nota
-          await ref.read(listProvider.notifier).add(newNote);
-          GoRouter.of(context).go(routes.mainHolder);
+          if(widget.note!=null){
+            print("update note");
+
+          }else {
+            await ref.read(listProvider.notifier).add(newNote);
+            GoRouter.of(context).go(routes.mainHolder);
+          }
         }catch(e,s){
+
     print(e);
     print(s);
         }
         }else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Debes añadir almenos un título")));
         // GoRouter.of(context).go(routes.mainHolder);
       }
     }, icon: widget.note !=null ? const Icon(Icons.edit) : const Icon(Icons.save));
   }
 
+  _updateNote(){
+      if(updateTimer?.isActive ?? false){
+       updateTimer!.cancel();
+      }
+      updateTimer = Timer(const Duration(milliseconds: 500),(){
+        widget.note!.updateNote(_titleController.text, _noteController.text);
+
+        print("se gestriona el update");
+        print(widget.note);
+        ref.read(listProvider.notifier).update(widget.note);
+      });
+    }
+
   bool _checkIfEmpty(){
-    if(_titleController.text.isNotEmpty || _noteController.text.isNotEmpty){
+    if(_titleController.text.isNotEmpty){
       return true;
     }
     return false;
+  }
+
+  _updatNote(){
+
   }
 
   }

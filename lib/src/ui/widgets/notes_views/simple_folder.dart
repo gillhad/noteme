@@ -21,7 +21,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: user!.settings.simpleMode ? 50 : 100,
+        height: user!.settings.simpleMode ? 60 : 60,
         padding: EdgeInsets.symmetric(horizontal: 10,vertical: user.settings.simpleMode ? 0 : 10 ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -39,14 +39,19 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      longString,
+                      folder.title,
                       maxLines: 1,
                       // note.title,
                       style: textTheme.headlineSmall,),
-                    if(!user.settings.simpleMode)Flexible(child: Text(longString))
+                    // if(!user.settings.simpleMode)Flexible(child: Column(
+                    //   children: [
+                    //
+                    //   ],
+                    // ))
                   ],
                 ),
               ),

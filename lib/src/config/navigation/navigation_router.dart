@@ -5,6 +5,7 @@ import 'package:noteme/src/models/arguments.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/ui/screens/main_holder.dart';
+import 'package:noteme/src/ui/screens/notes/folder_view.dart';
 import 'package:noteme/src/ui/screens/notes/note_view.dart';
 import 'package:noteme/src/ui/screens/settings/settings_conf.dart';
 
@@ -35,6 +36,16 @@ final router = GoRouter(
             return NoteView(
               note: note,
               folderId: folderId,
+            );
+          }
+      ),
+      GoRoute(
+          path: routes.folderView,
+          builder:(context, state) {
+            print(state.extra);
+            Folders folder = state.extra as Folders;
+            return FolderView(
+              folder: folder,
             );
           }
       ),

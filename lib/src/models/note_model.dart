@@ -34,10 +34,10 @@ NoteClass.fromJson(json){
   pinned = json["pinned"]  == 1 ? true :false;
   folderId = json["folder_id"];
   background = json["background"];
-  reminderTime = json["reminder_time"];
-  updateTime = json["update_time"]; 
+  reminderTime = TimeManager.databaseToDateTime(json["reminder_time"]);
+  updateTime = TimeManager.databaseToDateTime(json["update_time"]);
   creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
-  deleteTime = json["delete_time"];
+  deleteTime = TimeManager.databaseToDateTime(json["delete_time"]);
   
 }
 
@@ -60,6 +60,12 @@ toMap(){
   return map;
 }
 
+updateNote(title,content){
+  this.title = title;
+  this.content = content;
+  this.updateTime = DateTime.now();
+}
+
 @override
 bool operator == (Object other){
   return identical(this,other) || other is NoteClass && hashCode == other.hashCode;
@@ -71,7 +77,7 @@ bool operator == (Object other){
 
 @override
   String toString() {
-    return "title: $title, id:$id";
+    return "title: $title, id:$id,content:$content, updateTime:$updateTime";
   }
 
 }

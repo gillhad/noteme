@@ -10,7 +10,7 @@ class TimeManager{
     }
     String date = "";
 
-    date = DateFormat('yyyy-mm-dd hh:mm','es').format(dateTime);
+    date = DateFormat('yyyy-MM-dd hh:mm','es').format(dateTime);
     return date;
   }
   static DateTime databaseToDateTime(String dateTime){
