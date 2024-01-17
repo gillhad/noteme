@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="update items">
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="update class inheritance">
+      <change afterPath="$PROJECT_DIR$/test/provider_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/item_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/item_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705487819433</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update class inheritance">
+      <option name="closed" value="true" />
+      <created>1705489631492</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705489631492</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -253,6 +264,7 @@
     <MESSAGE value="read from database&#10;- notes&#10;- folders" />
     <MESSAGE value="Create folder&#10;Add note to folder&#10;sort items in list" />
     <MESSAGE value="update items" />
-    <option name="LAST_COMMIT_MESSAGE" value="update items" />
+    <MESSAGE value="update class inheritance" />
+    <option name="LAST_COMMIT_MESSAGE" value="update class inheritance" />
   </component>
 </project>

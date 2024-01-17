@@ -12,6 +12,8 @@ class ItemModel{
 
   ItemModel({required this.title, required this.creationTime});
 
+  ItemModel.fromOther(this.id, this.title, this.updateTime,this.creationTime);
+
   ItemModel.fromJson(json){
     id = json["id"];
     title = json["title"];
@@ -20,4 +22,18 @@ class ItemModel{
     creationTime = TimeManager.databaseToDateTime(json["creation_time"])!;
     pinned = json["pinned"] == 1 ? true : false;
   }
+
+  @override
+  String toString() {
+
+    return "id:$id, creationTime:$creationTime, updateTime:$updateTime, title:$title";
+  }
+
+  @override
+  bool operator == (Object other){
+    return identical(this,other) || other is ItemModel && hashCode == other.hashCode;
+  }
+
+  @override
+  int get hashCode => id;
 }
