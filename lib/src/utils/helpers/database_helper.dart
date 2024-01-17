@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/folder_model.dart';
+import 'package:noteme/src/models/item_model.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 import '../../models/note_model.dart';
@@ -9,7 +10,7 @@ import '../../models/note_model.dart';
 class DataBaseHelper{
 
   static Future getAll()async{
-     List<dynamic> items = [];
+     List<ItemModel> items = [];
      var folders = await DatabaseInfo.getFolders();
      var notes = await DatabaseInfo.getNotes();
      try {

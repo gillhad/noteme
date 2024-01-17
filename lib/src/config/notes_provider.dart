@@ -4,6 +4,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/models/folder_model.dart';
+import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/models/list_model.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
 
@@ -15,14 +16,14 @@ import '../models/note_model.dart';
 //         (ref) => NoteProvider(ref)
 // );
 
-final listProvider = StateNotifierProvider<ItemListState, List<dynamic>>(ItemListState.new);
+final listProvider = StateNotifierProvider<ItemListState, List<ItemModel>>(ItemListState.new);
 
-class ItemListState extends StateNotifier<List<dynamic>>{
+class ItemListState extends StateNotifier<List<ItemModel>>{
   ItemListState(this._ref):super([]){
     _init();
   }
   final Ref _ref;
-  List<dynamic> itemList = [];
+  List<ItemModel> itemList = [];
 
   _init() async {
     try {
@@ -89,13 +90,13 @@ class ItemListState extends StateNotifier<List<dynamic>>{
   sort()async{
    state.sort((a,b){
      if(a.updateTime!=null && b.updateTime!=null){
-       if(a.updateTime.isBefore(b.updateTime)){
+       if(a.updateTime!.isBefore(b.updateTime!)){
          return 1;
        }else{
          return -1;
        }
      }else{
-       if(a.updateTime==null && b.creationTime!=null){
+       if(a.updateTime==null && b.updateTime!=null){
          return -1;
        }else{
          if(a.creationTime.isBefore(b.creationTime)){

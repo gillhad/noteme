@@ -18,27 +18,27 @@ class Folders extends ItemModel{
   bool blocked = false;
   String? password;
 
-  Folders({required this.title,required this.creationTime}) : super.fromJson(null);
+  Folders({required super.title,required super.creationTime});
 
    Folders.fromJson(json) : super.fromJson(json){
 
-    id = json["id"];
-    title = json["title"];
-    color = json["color"];
-    updateTime = json["update_time"];
-    creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
+    // id = json["id"];
+    // title = json["title"];
+    // color = json["color"];
+    // updateTime = json["update_time"];
+    // creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
     image = json["image"];
     pinned = json["pinned"] == 1 ? true : false;
   }
 
   toMap() {
     Map<String, dynamic> map = {
-      "title": title,
-      "color": color,
-      "update_time":TimeManager.dateTimeToDB(updateTime),
-      "creation_time":TimeManager.dateTimeToDB(creationTime),
+      "title": super.title,
+      "color": super.color,
+      "update_time":TimeManager.dateTimeToDB(super.updateTime),
+      "creation_time":TimeManager.dateTimeToDB(super.creationTime),
       "image":image,
-      "pinned":pinned ? 1: 0
+      "pinned":super.pinned ? 1: 0
     };
     return map;
   }

@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Create folder&#10;Add note to folder&#10;sort items in list">
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="update items">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/item_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/item_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705321026487</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update items">
+      <option name="closed" value="true" />
+      <created>1705487819433</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705487819433</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -250,6 +252,7 @@
     <MESSAGE value="create inserts&#10;- notes&#10;- folders&#10;- update note in folder" />
     <MESSAGE value="read from database&#10;- notes&#10;- folders" />
     <MESSAGE value="Create folder&#10;Add note to folder&#10;sort items in list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create folder&#10;Add note to folder&#10;sort items in list" />
+    <MESSAGE value="update items" />
+    <option name="LAST_COMMIT_MESSAGE" value="update items" />
   </component>
 </project>

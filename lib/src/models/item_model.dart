@@ -10,12 +10,14 @@ class ItemModel{
   late DateTime creationTime;
   bool pinned = false;
 
+  ItemModel({required this.title, required this.creationTime});
+
   ItemModel.fromJson(json){
     id = json["id"];
     title = json["title"];
     color = json["color"];
-    updateTime = json["update_time"];
-    creationTime = TimeManager.databaseToDateTime(json["creation_time"]);
+    updateTime =  TimeManager.databaseToDateTime(json["update_time"]);
+    creationTime = TimeManager.databaseToDateTime(json["creation_time"])!;
     pinned = json["pinned"] == 1 ? true : false;
   }
 }

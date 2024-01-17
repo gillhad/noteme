@@ -13,7 +13,10 @@ class TimeManager{
     date = DateFormat('yyyy-MM-dd hh:mm','es').format(dateTime);
     return date;
   }
-  static DateTime databaseToDateTime(String dateTime){
+  static DateTime? databaseToDateTime(String? dateTime){
+    if(dateTime == null){
+      return null;
+    }
     ///Take care of local time for adding hours
     DateTime date = DateTime.parse(dateTime);
         // .add(const Duration(hours: 1));
