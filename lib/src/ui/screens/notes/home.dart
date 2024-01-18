@@ -309,51 +309,19 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   ///FUNCTIONS
 
   initList() async {
-    print("init");
-    try {
-      //TODO: read db and create first list
-      // await addExampleItems();
-      if (itemsList.isEmpty) {
-        // await ref.read(itemsRepository).addNote(NoteClass(title: "nueva", content: "content", creationTime: DateTime.now()));
-      } else {
-        _reloadList();
-      }
-      // print("ordeno la nota");
-      // ref.read(listProvider.notifier).sort();
-      showList.clear();
-      showList.addAll(itemsList);
-      setState(() {});
-    }catch(e){
-      print(e);
-    }
+
   }
 
   _reloadList() async {
-    // var response = await DataBaseHelper.getAll();
-    // response.forEach((item){
-    //   if(!itemsList.contains(item)){
-    //     itemsList.add(item);
-    //   }
-    // });
-    showList.clear();
-    print("tenemos items en la lista ${itemsList.length}");
-    showList.addAll(itemsList);
+
   }
 
   showItem(context, WidgetRef ref, index) {
-    // print(showList[0].toString());
-    // print(showList[0].runtimeType);
-    // print(showList[0] is NoteClass);
-    // print(showList.length);
-    ref.watch(userState);
     if (showList[index] is NoteClass) {
       return noteItem(context, showList[index], ref);
     } else if (showList[index] is Folders) {
-      print(showList[index]);
       return folderItem(context, showList[index], _openFolder, ref);
     } else {
-      print(showList[index]);
-      print("cagada");
       return Container();
     }
   }
@@ -376,18 +344,10 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       _searchTimer!.cancel();
     }
     _searchTimer = Timer(const Duration(milliseconds: 500), () {
-      for (var item in ref.watch(listProvider)) {
-        if (item is NoteClass) {
-          if (item.title.contains(searchString) ||
-              item.content.contains(searchString)) {
-            showList.add(item);
-          }
-        } else {
-          if (item.title.contains(searchString)) {
-            showList.add(item);
-          }
-        }
-      }
+      ref.read(listProvider.notifier).getSearch(searchString);
+    });
+    setState(() {
+
     });
   }
 

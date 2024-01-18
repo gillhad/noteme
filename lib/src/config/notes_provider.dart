@@ -24,10 +24,12 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   }
   final Ref _ref;
   List<ItemModel> itemList = [];
+  List<ItemModel> allItems = [];
 
   _init() async {
     try {
       state = await DataBaseHelper.getAll();
+      allItems = await DataBaseHelper.getAll();
       sort();
     }catch(e,s){
       print(e);
@@ -82,9 +84,30 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   }
 
   getFolders(){
-    var items =  itemList.whereType<Folders>();
-    var newItems = itemList.where((item) => item is Folders);
+    // var items =  itemList.whereType<Folders>();
+    // var newItems = itemList.where((item) => item is Folders);
     return itemList.whereType<Folders>();
+  }
+
+  getSearch(searchString){
+    if(searchString.isEmpty){
+      getAll();
+    }
+      List<ItemModel> newList = [];
+    for (var item in allItems) {
+      if (item is NoteClass) {
+        if (item.title.contains(searchString) ||
+            item.content.contains(searchString)) {
+          newList.add(item);
+        }
+      } else if(item is Folders){
+        if (item.title.contains(searchString)) {
+          print(item);
+          newList.add(item);
+        }
+      }
+    }
+    state = newList;
   }
 
   sort()async{
@@ -96,13 +119,17 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
          return -1;
        }
      }else{
-       if(a.updateTime==null && b.updateTime!=null){
-         return -1;
-       }else{
-         if(a.creationTime.isBefore(b.creationTime)){
-           return 1;
-         }else{
+       if(a.updateTime!=null && b.updateTime!=null){
+         if(b.creationTime.isBefore(a.creationTime)){
            return -1;
+         }else{
+           return 1;
+         }
+       }else{
+         if(a.updateTime!=null && b.updateTime==null){
+           return -1;
+         }else{
+           return 1;
          }
        }
      }
