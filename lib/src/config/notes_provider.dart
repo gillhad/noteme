@@ -39,7 +39,12 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
 
   void getAll()async{
-    state = await DataBaseHelper.getAll();
+    allItems = await DataBaseHelper.getAll();
+    print("todos los items despues de añadir a nota");
+    print(allItems);
+    state = allItems;
+    sort();
+    state = [...state];
   }
   
   
@@ -72,6 +77,12 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     state = [...state];
   }
 
+  ///add note to folder
+  Future addToFolder(item)async{
+    await DatabaseInfo.updateNote(item);
+    getAll();
+  }
+
 
   Future remove(item)async{
     if(item is NoteClass) {
@@ -84,9 +95,10 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   }
 
   getFolders(){
-    // var items =  itemList.whereType<Folders>();
-    // var newItems = itemList.where((item) => item is Folders);
-    return itemList.whereType<Folders>();
+    print(state);
+    var newItems = [];
+    newItems.addAll(state.whereType<Folders>());
+    return newItems;
   }
 
   getSearch(searchString){

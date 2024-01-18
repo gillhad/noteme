@@ -204,6 +204,48 @@ abstract class AL {
   /// In es, this message translates to:
   /// **'Añadir recordatorio'**
   String get dialog_reminder;
+
+  /// No description provided for @dialog_rename.
+  ///
+  /// In es, this message translates to:
+  /// **'Renombrar'**
+  String get dialog_rename;
+
+  /// No description provided for @dialog_pin.
+  ///
+  /// In es, this message translates to:
+  /// **'Fijar'**
+  String get dialog_pin;
+
+  /// No description provided for @dialog_unpin.
+  ///
+  /// In es, this message translates to:
+  /// **'Desfijar'**
+  String get dialog_unpin;
+
+  /// No description provided for @dialog_folder_not_empty.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar carpeta'**
+  String get dialog_folder_not_empty;
+
+  /// No description provided for @dialog_folder_msg.
+  ///
+  /// In es, this message translates to:
+  /// **'La carpeta contiene notas, deseas eliminarlas o mantenerlas?'**
+  String get dialog_folder_msg;
+
+  /// No description provided for @dialog_folder_keep.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantener'**
+  String get dialog_folder_keep;
+
+  /// No description provided for @error_empty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este valor es obligatorio'**
+  String get error_empty;
 }
 
 class _ALDelegate extends LocalizationsDelegate<AL> {

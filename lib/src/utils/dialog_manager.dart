@@ -9,6 +9,8 @@ class DialogManager {
     required Widget content,
     required Function onCancel,
     required Function onAccept,
+    String? cancelMsg,
+    String? acceptMsg
   }) {
   return showDialog(
       context: context,
@@ -19,10 +21,10 @@ class DialogManager {
       actions: [
         TextButton(onPressed: (){
           onCancel();
-        }, child: Text(AL.of(context).cancel)),
+        }, child: Text(cancelMsg ?? AL.of(context).cancel)),
         TextButton(onPressed: (){
           onAccept();
-        }, child: Text(AL.of(context).accept)),
+        }, child: Text( acceptMsg ?? AL.of(context).accept)),
       ],
     );
   });

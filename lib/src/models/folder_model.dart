@@ -12,7 +12,7 @@ class Folders extends ItemModel{
   // late DateTime creationTime;
   String? image;
   // bool pinned = false;
-  List<NoteClass>? notes;
+  List<NoteClass> notes = [];
 
   ///Folder blocked by password
   bool blocked = false;

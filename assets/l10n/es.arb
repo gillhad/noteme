@@ -28,6 +28,16 @@
 "@@_DIALOGS":{},
 "dialog_add_folder":"Añadir a carpeta",
 "dialog_delete":"Eliminar",
-"dialog_reminder":"Añadir recordatorio"
+"dialog_reminder":"Añadir recordatorio",
+"dialog_rename":"Renombrar",
+"dialog_pin":"Fijar",
+"dialog_unpin":"Desfijar",
+"dialog_folder_not_empty":"Eliminar carpeta",
+"dialog_folder_msg":"La carpeta contiene notas, deseas eliminarlas o mantenerlas?",
+"dialog_folder_keep":"Mantener",
+
+
+"@@_ERRORS":{},
+"error_empty":"Este valor es obligatorio"
 
 }

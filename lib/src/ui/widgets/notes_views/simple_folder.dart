@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/models/folder_model.dart';
+import 'package:noteme/src/ui/widgets/dialogs/dialog_folder.dart';
 import 'package:noteme/src/utils/dialog_manager.dart';
 
 import '../../../config/app_colors.dart';
@@ -31,9 +32,12 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
         child: Row(
           crossAxisAlignment: !user.settings.simpleMode ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
-            Container(
-                padding: const EdgeInsets.all(5),
-                child: const Icon(Icons.folder)),
+            if(folder.pinned) const Padding(
+                padding: EdgeInsets.all(5),
+                child: Icon(Icons.push_pin_outlined)),
+            const Padding(
+                padding:  EdgeInsets.all(5),
+                child:  Icon(Icons.folder)),
             const SizedBox(width: 10,),
             Expanded(
               flex: 10,
@@ -48,6 +52,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
                       maxLines: 1,
                       // note.title,
                       style: textTheme.headlineSmall,),
+                    //TODO: in search mode show amount of notes matching the result or notes with the results
                     // if(!user.settings.simpleMode)Flexible(child: Column(
                     //   children: [
                     //
@@ -59,11 +64,9 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
             ),
             const Spacer(flex: 1,),
             Flexible(
-              child: Container(
-                child: IconButton(onPressed: (){
-                  manageFolder();
-                }, icon: Icon(Icons.more_vert)),
-              ),
+              child: IconButton(onPressed: ()async{
+                await folderOptionsDialog(context, ref, folder);
+              }, icon: const Icon(Icons.more_vert)),
             )
           ],
         ),

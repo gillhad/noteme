@@ -29,13 +29,9 @@ final router = GoRouter(
       GoRoute(
           path: routes.noteView,
           builder:(context, state) {
-            print(state.extra);
-           NoteViewArguments arg = state.extra as NoteViewArguments;
-              NoteClass? note = arg.note;
-              int? folderId = arg.folderId;
+              NoteClass? note = state.extra as NoteClass?;
             return NoteView(
               note: note,
-              folderId: folderId,
             );
           }
       ),

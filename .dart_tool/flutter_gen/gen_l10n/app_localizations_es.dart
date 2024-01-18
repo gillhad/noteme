@@ -60,4 +60,25 @@ class ALEs extends AL {
 
   @override
   String get dialog_reminder => 'Añadir recordatorio';
+
+  @override
+  String get dialog_rename => 'Renombrar';
+
+  @override
+  String get dialog_pin => 'Fijar';
+
+  @override
+  String get dialog_unpin => 'Desfijar';
+
+  @override
+  String get dialog_folder_not_empty => 'Eliminar carpeta';
+
+  @override
+  String get dialog_folder_msg => 'La carpeta contiene notas, deseas eliminarlas o mantenerlas?';
+
+  @override
+  String get dialog_folder_keep => 'Mantener';
+
+  @override
+  String get error_empty => 'Este valor es obligatorio';
 }

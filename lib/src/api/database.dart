@@ -22,18 +22,14 @@ class DatabaseInfo {
       await db.execute(
           'CREATE TABLE folders (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, color TEXT,update_time DATETIME,creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", image TEXT, pinned BOOLEAN DEFAULT "false" NOT NULL, blocked BOOLEAN DEFAULT "false" NOT NULL, password VARCHAR(8))');
       await db.execute(
-          'CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, folder_id INTEGER,title VARCHAR,content TEXT,tag TEXT, color TEXT, icon TEXT,hidden BOOLEAN DEFAULT "false", pinned BOOLEAN DEFAULT "false",background TEXT, reminder_time DATETIME, update_time DATETIME, creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", delete_time DATETIME, FOREIGN KEY (folder_id) REFERENCES folders(id) )');
+          'CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, folder_id INTEGER,title VARCHAR,content TEXT,tag TEXT, color TEXT, icon TEXT,hidden BOOLEAN DEFAULT "false", pinned BOOLEAN DEFAULT "false",background TEXT, reminder_time DATETIME, update_time DATETIME, creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", delete_time DATETIME, FOREIGN KEY (folder_id) REFERENCES folders(id) ON DELETE SET NULL)');
     }
 
 
    static addNewNote(NoteClass note) async {
       try {
         await db!.insert('notes', note.toMap());
-        // print("hemos añadido nota");
-        // print(await getDatabaseInfo());
-        // print("actualizamos la lista de items");
         var newNote = await db!.rawQuery('SELECT * FROM notes ORDER BY id DESC LIMIT 1');
-        print("devuelvo nota $newNote");
         return NoteClass.fromJson(newNote[0]);
       } catch (e) {
         // print("no se añade nota");

@@ -15,11 +15,11 @@ void main() async{
 
   UserHelper.user = User();
   var databasesPath = await getDatabasesPath();
-  String path = join(databasesPath, 'demo.db');
+  String path = join(databasesPath, 'notes.db');
 
   // databaseFactory.deleteDatabase(path);
 
-  DatabaseInfo.setDatabase(await openDatabase("demo.db", version: 1,onCreate: (Database db, int version){
+  DatabaseInfo.setDatabase(await openDatabase("notes.db", version: 1,onCreate: (Database db, int version){
   DatabaseInfo.onCreateDatabase(db);
   }));
 

@@ -16,12 +16,15 @@ class DataBaseHelper{
      try {
        // List<dynamic> items = [];
        folders.forEach((folder) => items.add(Folders.fromJson(folder)));
-       notes.forEach((note) => items.add(NoteClass.fromJson(note)));
+       notes.forEach((note) {
+         if(note["folderId"]!=null) {
+           items.add(NoteClass.fromJson(note));
+         }});
        for(var folder in items) {
          if (folder is Folders) {
            var notes = await getNoteInFolders(folder.id);
            if (notes.isNotEmpty) {
-             folder.notes?.addAll(notes);
+             folder.notes.addAll(notes);
            }
          }
        }

@@ -24,15 +24,25 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width / 2,
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
-                      optionDialog(text: AL.of(context).dialog_add_folder, onPressed: () {
-                        setState((){
-                          addToFolder = !addToFolder;
-                          print(addToFolder);
-                        });
-                      }),
-                      if(addToFolder) showFolders(context, ref),
+                      ///OPTION1
                       optionDialog(
-                          text: AL.of(context).dialog_reminder, onPressed: () {}),
+                          text: note.pinned ? AL.of(context).dialog_unpin : AL.of(context).dialog_pin,
+                          onPressed: (){
+                            note.pinned = !note.pinned;
+                            ref.read(listProvider.notifier).update(note);
+                            GoRouter.of(context).pop();
+                      }),
+                      ///OPTION2
+                      optionDialog(text: AL.of(context).dialog_add_folder, onPressed: () {
+                       showFolders(context, ref,note);
+                      }),
+
+                      ///OPTION3
+                      optionDialog(
+                          text: AL.of(context).dialog_reminder, onPressed: () {
+
+                      }),
+                      ///OPTION4
                       optionDialog(
                           text: AL.of(context).dialog_delete,
                           onPressed: () async {
@@ -47,24 +57,81 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
       });
 }
 
-Widget showFolders(context,WidgetRef ref){
+showFolders(context,WidgetRef ref,NoteClass note){
   var list = ref.watch(listProvider.notifier).getFolders();
+  print(list);
+  int? indexSelected;
   //TODO: if no folders, create new one
-  return ConstrainedBox(
-    constraints: BoxConstraints(maxHeight: 50,minWidth: MediaQuery.of(context).size.width,minHeight: 0),
-    child: ListView.builder(
-      shrinkWrap: true,
-        itemCount: list.length,
-        itemBuilder: (context,index){
-      return Container(height: 5,width: 5,color: Colors.red,);
-    }),
+  return showDialog(
+      context: context,
+      builder: (context) {
+    return StatefulBuilder(
+      builder: (context, state) {
+
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height/2
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListView.builder(
+                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 17),
+                      shrinkWrap: true,
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                            onTap: (){
+                              state((){
+                                if(indexSelected==index){
+                                 indexSelected = null;
+                                }else {
+                                  indexSelected = index;
+                                }
+                                print(indexSelected);
+                              });
+                            },
+                            child: selectFolder(list[index],index,indexSelected));
+                      }),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(onPressed: (){GoRouter.of(context).pop();}, child:Text(AL.of(context).cancel)),
+                      TextButton(onPressed: (){
+                        if(indexSelected!=null) {
+                          note.folderId = list[indexSelected].id;
+                          ref.read(listProvider.notifier).addToFolder(note);
+                          GoRouter.of(context).pop();
+                        }
+                      }, child:Text(AL.of(context).accept)),
+                    ],
+                  )
+                ],
+              ),
+            ));
+      }
+    );
+      },
   );
 }
 
-Widget selectFolder(Folders folder){
+Widget selectFolder(Folders folder, index,indexSelected){
+  print("indexSelected");
+  print(indexSelected);
   return Row(
+    mainAxisSize: MainAxisSize.max,
     children: [
-      Text(folder.title)
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+            decoration: BoxDecoration(
+              color: index == indexSelected ? Colors.black.withOpacity(0.3) : null,
+              borderRadius: BorderRadius.circular(3)
+            ),
+            child: Text(folder.title)),
+      )
     ],
   );
 }
