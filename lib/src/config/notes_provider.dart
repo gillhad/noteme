@@ -95,14 +95,11 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     }
       List<ItemModel> newList = [];
     for (var item in allItems) {
+      if(item.title.toLowerCase().contains(searchString.toLowerCase())){
+        newList.add(item);
+      }
       if (item is NoteClass) {
-        if (item.title.contains(searchString) ||
-            item.content.contains(searchString)) {
-          newList.add(item);
-        }
-      } else if(item is Folders){
-        if (item.title.contains(searchString)) {
-          print(item);
+           if(item.content.toLowerCase().contains(searchString.toLowerCase())) {
           newList.add(item);
         }
       }

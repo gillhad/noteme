@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/models/folder_model.dart';
+import 'package:noteme/src/utils/dialog_manager.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../config/app_styles.dart';
@@ -60,7 +61,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
             Flexible(
               child: Container(
                 child: IconButton(onPressed: (){
-                  //TODO: abre opcions com añadir recordatorio,pinear, eliminar o subir posición
+                  manageFolder();
                 }, icon: Icon(Icons.more_vert)),
               ),
             )
@@ -68,4 +69,8 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
         ),
       ),
     );
+
 }
+    manageFolder()async{
+
+    }

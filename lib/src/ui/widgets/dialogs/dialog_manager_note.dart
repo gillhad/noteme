@@ -13,7 +13,7 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
       context: context,
       barrierDismissible: true,
       builder: (context) {
-            bool _addToFolder = false;
+            bool addToFolder = false;
         return StatefulBuilder(
           builder: (context, setState) {
             return Dialog(
@@ -26,19 +26,17 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
                       optionDialog(text: AL.of(context).dialog_add_folder, onPressed: () {
                         setState((){
-                          _addToFolder = !_addToFolder;
-                          print(_addToFolder);
+                          addToFolder = !addToFolder;
+                          print(addToFolder);
                         });
                       }),
-                      if(_addToFolder) showFolders(context, ref),
+                      if(addToFolder) showFolders(context, ref),
                       optionDialog(
                           text: AL.of(context).dialog_reminder, onPressed: () {}),
                       optionDialog(
                           text: AL.of(context).dialog_delete,
                           onPressed: () async {
-                            print("se procede a eliminar una nota");
                             ref.read(listProvider.notifier).remove(note);
-                            print("eliminación correcta");
                             GoRouter.of(context).pop();
                           }),
                     ]),
@@ -52,8 +50,6 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
 Widget showFolders(context,WidgetRef ref){
   var list = ref.watch(listProvider.notifier).getFolders();
   //TODO: if no folders, create new one
-  print("list");
-  print(list.length);
   return ConstrainedBox(
     constraints: BoxConstraints(maxHeight: 50,minWidth: MediaQuery.of(context).size.width,minHeight: 0),
     child: ListView.builder(
@@ -80,8 +76,8 @@ Widget optionDialog({required String text, required Function onPressed}) {
     },
     child: Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 3),
-      padding: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 3),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
