@@ -65,7 +65,6 @@ showFolders(context,WidgetRef ref,NoteClass note){
   if(list.isEmpty){
     addNewFolder(context,ref, note);
   }else {
-    //TODO: if no folders, create new one
     return showDialog(
       context: context,
       builder: (context) {
@@ -153,24 +152,24 @@ showFolders(context,WidgetRef ref,NoteClass note){
 }
 
  addNewFolder(context, WidgetRef ref, note){
-  TextEditingController _folderTitleController = TextEditingController();
+  TextEditingController folderTitleController = TextEditingController();
   return DialogManager().showCustomDialog(context,
       title: AL.of(context).home_add_folder_title,
       content: TextFormField(
-        controller: _folderTitleController,
+        controller: folderTitleController,
       ),
       onCancel: () {
         GoRouter.of(context).pop();
       },
       onAccept: () async{
-        Folders newFolder = Folders(title: _folderTitleController.text, creationTime: DateTime.now());
+        Folders newFolder = Folders(title: folderTitleController.text, creationTime: DateTime.now());
         try {
           await DataBaseHelper.createAndAddToFolder(newFolder, note, ref);
-          _folderTitleController.clear();
+          folderTitleController.clear();
           GoRouter.of(context).pop();
           GoRouter.of(context).pop();
         }catch(e){
-
+          print(e);
         }
 
 
@@ -183,7 +182,7 @@ Widget selectFolder(Folders folder, index,indexSelected){
     children: [
       Expanded(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 7,horizontal: 10),
             decoration: BoxDecoration(
               color: index == indexSelected ? Colors.black.withOpacity(0.3) : null,
               borderRadius: BorderRadius.circular(3)
