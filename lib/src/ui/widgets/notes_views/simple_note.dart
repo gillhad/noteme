@@ -19,7 +19,7 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
  User? user =  ref.watch(userState);
   return GestureDetector(
     onTap: (){
-      GoRouter.of(context).push(routes.noteView, extra:NoteViewArguments(note: note));
+      GoRouter.of(context).push(routes.noteView, extra: note);
     },
     child: Container(
       width: MediaQuery.of(context).size.width,

@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/item_model.dart';
-import 'package:noteme/src/models/list_model.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
 
 import '../models/note_model.dart';
@@ -40,8 +39,6 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   void getAll()async{
     allItems = await DataBaseHelper.getAll();
-    print("todos los items despues de añadir a nota");
-    print(allItems);
     state = allItems;
     sort();
     state = [...state];
@@ -103,6 +100,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   getSearch(searchString){
     if(searchString.isEmpty){
+      print("get all");
       getAll();
     }
       List<ItemModel> newList = [];

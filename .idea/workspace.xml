@@ -4,28 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Adapt search item with provider">
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_folder.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/utils/form_validation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Add dialog for&#10;folders&#10;notes&#10;add remove folder function&#10;add add to folder function&#10;add pin item">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/provider_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/provider_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,22 +63,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "design__2",
-    "io.flutter.reload.alreadyRun": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editing.templates",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;design__2&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Projects\noteme\lib\src\utils" />
@@ -256,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705572764054</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add dialog for&#10;folders&#10;notes&#10;add remove folder function&#10;add add to folder function&#10;add pin item">
+      <option name="closed" value="true" />
+      <created>1705581395054</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1705581395054</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -294,6 +291,7 @@
     <MESSAGE value="update class inheritance" />
     <MESSAGE value="add test file for test items" />
     <MESSAGE value="Adapt search item with provider" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adapt search item with provider" />
+    <MESSAGE value="Add dialog for&#10;folders&#10;notes&#10;add remove folder function&#10;add add to folder function&#10;add pin item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add dialog for&#10;folders&#10;notes&#10;add remove folder function&#10;add add to folder function&#10;add pin item" />
   </component>
 </project>

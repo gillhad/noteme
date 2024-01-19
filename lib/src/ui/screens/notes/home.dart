@@ -334,7 +334,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   }
 
   _openFolder(folder) {
-    GoRouter.of(context).go(routes.folderView,extra: folder);
+    GoRouter.of(context).push(routes.folderView,extra: folder);
   }
 
   _searchItems(searchString) {

@@ -17,7 +17,7 @@ class DataBaseHelper{
        // List<dynamic> items = [];
        folders.forEach((folder) => items.add(Folders.fromJson(folder)));
        notes.forEach((note) {
-         if(note["folderId"]!=null) {
+         if(note["folder_id"]==null) {
            items.add(NoteClass.fromJson(note));
          }});
        for(var folder in items) {

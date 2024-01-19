@@ -118,8 +118,6 @@ showFolders(context,WidgetRef ref,NoteClass note){
 }
 
 Widget selectFolder(Folders folder, index,indexSelected){
-  print("indexSelected");
-  print(indexSelected);
   return Row(
     mainAxisSize: MainAxisSize.max,
     children: [
