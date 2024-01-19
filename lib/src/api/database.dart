@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/models/note_model.dart';
+import 'package:noteme/src/utils/time_%20manager.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/folder_model.dart';
@@ -78,10 +79,15 @@ class DatabaseInfo {
 
    static updateNote(NoteClass note) async{
      try {
-       // var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
+       var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
+       print("nota anterior $oldNote");
        await db!.update(
            "notes", note.toMap(), where: 'id = ${note.id}');
+       if(note.folderId!=null){
+         await db!.update('folders', {"update_time":TimeManager.dateTimeToDB(DateTime.now())},where: 'id = ${note.folderId}');
+       }
        var newNote = await db!.rawQuery('SELECT * FROM notes WHERE id=  ${note.id}');
+       print("nota actualizada $newNote");
        return newNote;
      } catch (e) {
        return false;
@@ -91,7 +97,7 @@ class DatabaseInfo {
    static updateFolder(folders)async{
      try {
        await db!.update(
-           "folder", folders.toMap(), where: 'id = ${folders.id}');
+           "folders", folders.toMap(), where: 'id = ${folders.id}');
        return true;
      } catch (e) {
        return false;

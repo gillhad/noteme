@@ -50,6 +50,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
                     Text(
                       folder.title,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       // note.title,
                       style: textTheme.headlineSmall,),
                     //TODO: in search mode show amount of notes matching the result or notes with the results
@@ -64,9 +65,13 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
             ),
             const Spacer(flex: 1,),
             Flexible(
-              child: IconButton(onPressed: ()async{
-                await folderOptionsDialog(context, ref, folder);
-              }, icon: const Icon(Icons.more_vert)),
+              child: Container(
+                alignment: Alignment.center,
+                width: 30,
+                child: IconButton(padding: EdgeInsets.zero,onPressed: ()async{
+                  await folderOptionsDialog(context, ref, folder);
+                }, icon: const Icon(Icons.more_vert)),
+              ),
             )
           ],
         ),

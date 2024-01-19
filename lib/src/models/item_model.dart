@@ -25,7 +25,6 @@ class ItemModel{
 
   @override
   String toString() {
-
     return "id:$id, creationTime:$creationTime, updateTime:$updateTime, title:$title";
   }
 

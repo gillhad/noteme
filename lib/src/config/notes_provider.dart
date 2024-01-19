@@ -56,15 +56,22 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   Future update(item)async{
     if(item is NoteClass){
+      print(item);
       await DatabaseInfo.updateNote(item);
     }else if(item is Folders){
       await DatabaseInfo.updateFolder(item);
     }else{
       return null;
     }
-    state[state.indexWhere((listItem) => listItem.id == item.id && listItem.runtimeType == item.runtimeType)] = item;
+    if(state.contains(item)) {
+      state[state.indexWhere((listItem) =>
+      listItem.id == item.id && listItem.runtimeType == item.runtimeType)] =
+          item;
     sort();
     state = [...state];
+    }else{
+      getAll();
+    }
   }
 
   ///add note to folder
@@ -112,6 +119,9 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   sort()async{
    state.sort((a,b){
+     if(a.pinned && !b.pinned){
+       return -1;
+     }
      if(a.updateTime!=null && b.updateTime!=null){
        if(a.updateTime!.isBefore(b.updateTime!)){
          return 1;
