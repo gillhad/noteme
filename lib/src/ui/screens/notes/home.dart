@@ -48,7 +48,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   @override
   void initState() {
     //TODO: set draweer pos from settings
-    initList();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
@@ -124,12 +123,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
             },
             icon: Icon(Icons.search)),
 
-        ///TODO: add filters
+        ///TODO: add filters by tag?
         // Icon(Icons.filter),
         ///TODO: Add extra option
         IconButton(
             onPressed: () async {
-              _reloadList();
             },
             icon: Icon(Icons.more_vert)),
       ],
@@ -306,13 +304,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   ///FUNCTIONS
 
-  initList() async {
-
-  }
-
-  _reloadList() async {
-
-  }
 
   showItem(context, WidgetRef ref, index) {
     if (showList[index] is NoteClass) {
@@ -354,8 +345,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     showList.clear();
     switch (_drawerPos) {
       case 0:
-        initList();
-        // _currentFolder = null;
       case 1:
         showList.addAll(itemsList.where((element) => element is Folders));
         setState(() {

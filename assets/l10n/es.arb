@@ -27,6 +27,7 @@
 
 "@@_DIALOGS":{},
 "dialog_add_folder":"Añadir a carpeta",
+"dialog_move_folder":"Mover de carpeta",
 "dialog_delete":"Eliminar",
 "dialog_reminder":"Añadir recordatorio",
 "dialog_rename":"Renombrar",

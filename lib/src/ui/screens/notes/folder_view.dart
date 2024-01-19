@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_note.dart';
+import 'package:noteme/src/utils/helpers/database_helper.dart';
 
 class FolderView extends ConsumerStatefulWidget {
 final  Folders folder;
@@ -15,6 +16,22 @@ final  Folders folder;
 }
 
   class _FolderViewState extends ConsumerState<FolderView> {
+  var _titleController = TextEditingController();
+  bool _editTitle = false;
+
+  @override
+  void initState() {
+    _titleController.text = widget.folder.title;
+    _titleController.addListener(() { });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    super.dispose();
+  }
+
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -25,6 +42,15 @@ final  Folders folder;
 
     AppBar _appBar() {
       return AppBar(
+        title: _editTitle ? titleManage() : Text(widget.folder.title),
+        actions: [IconButton(onPressed: ()async{
+            if(_editTitle){
+              await updateFolder(ref);
+            }
+          setState(() {
+            _editTitle = !_editTitle;
+          });
+        }, icon: Icon(_editTitle ? Icons.save:   Icons.edit))],
         leading: IconButton(
           onPressed: () {
             GoRouter.of(context).pop();
@@ -32,6 +58,12 @@ final  Folders folder;
           icon: Icon(Icons.chevron_left),
         ),
       );
+    }
+
+    titleManage(){
+    return TextFormField(
+      controller: _titleController,
+    );
     }
 
     Widget _content() {
@@ -47,5 +79,14 @@ final  Folders folder;
     updateNotes() async {
       await widget.folder.updateNotes();
       setState(() {});
+    }
+
+    updateFolder(WidgetRef ref)async{
+    if(_titleController.text.trim().isEmpty){
+      return;
+    }
+      widget.folder.title = _titleController.text;
+      await ref.read(listProvider.notifier).update(widget.folder);
+
     }
   }

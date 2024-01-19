@@ -193,6 +193,12 @@ abstract class AL {
   /// **'Añadir a carpeta'**
   String get dialog_add_folder;
 
+  /// No description provided for @dialog_move_folder.
+  ///
+  /// In es, this message translates to:
+  /// **'Mover de carpeta'**
+  String get dialog_move_folder;
+
   /// No description provided for @dialog_delete.
   ///
   /// In es, this message translates to:

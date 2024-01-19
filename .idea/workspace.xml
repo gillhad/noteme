@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="sort items correctly when updated outside and inside folders">
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="manage pinned items">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" afterDir="false" />
     </list>
@@ -274,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705662337837</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="manage pinned items">
+      <option name="closed" value="true" />
+      <created>1705664200882</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1705664200882</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -316,6 +324,7 @@
     <MESSAGE value="fix folder navigation&#10;fix search by string" />
     <MESSAGE value="Add notes to folder&#10;create new folder when empty" />
     <MESSAGE value="sort items correctly when updated outside and inside folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="sort items correctly when updated outside and inside folders" />
+    <MESSAGE value="manage pinned items" />
+    <option name="LAST_COMMIT_MESSAGE" value="manage pinned items" />
   </component>
 </project>

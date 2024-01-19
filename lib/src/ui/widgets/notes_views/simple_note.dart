@@ -33,9 +33,6 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
         crossAxisAlignment: !user.settings.simpleMode ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          if(note.pinned) const Padding(
-              padding: EdgeInsets.all(5),
-              child: Icon(Icons.push_pin_outlined)),
           Container(
             padding: const EdgeInsets.all(5),
               child: const Icon(Icons.text_snippet_outlined)),
@@ -53,19 +50,21 @@ Widget noteItem(context,NoteClass note,WidgetRef ref){
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: textTheme.headlineSmall,),
-                  if(!user.settings.simpleMode)Flexible(child: Text(note.content))
+                  if(!user.settings.simpleMode)Flexible(child: Text(note.content)),
                 ],
               ),
             ),
           ),
           const Spacer(flex: 1,),
+          if(note.pinned) const Padding(
+              padding: EdgeInsets.all(5),
+              child: Icon(Icons.push_pin_outlined)),
           Flexible(
-            child: SizedBox(
-              width: 30,
-              child: IconButton(padding: EdgeInsets.zero,onPressed: ()async{
-                await noteOptionsDialog(context,ref,note);
-              }, icon: Icon(Icons.more_vert)),
-            ),
+            child: IconButton(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.zero,onPressed: ()async{
+              await noteOptionsDialog(context,ref,note);
+            }, icon: Icon(Icons.more_vert)),
           )
         ],
       ),

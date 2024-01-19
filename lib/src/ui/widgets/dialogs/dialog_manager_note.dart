@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:noteme/src/config/notes_provider.dart';
+import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
 
 import '../../../models/folder_model.dart';
@@ -35,7 +36,7 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
                             GoRouter.of(context).pop();
                       }),
                       ///OPTION2
-                      optionDialog(text: AL.of(context).dialog_add_folder, onPressed: () {
+                      optionDialog(text: note.folderId!=null ? AL.of(context).dialog_move_folder : AL.of(context).dialog_add_folder, onPressed: () {
                        showFolders(context, ref,note);
                       }),
 
@@ -65,6 +66,9 @@ showFolders(context,WidgetRef ref,NoteClass note){
   if(list.isEmpty){
     addNewFolder(context,ref, note);
   }else {
+    if(note.folderId!=null){
+      indexSelected = list.indexWhere((folder) =>folder.id == note.folderId);
+    }
     return showDialog(
       context: context,
       builder: (context) {
@@ -113,7 +117,7 @@ showFolders(context,WidgetRef ref,NoteClass note){
                                 child: Row(
                                 children: [
                                 Icon(Icons.add),
-                                Text(AL.of(context).home_add_new_folder)
+                                Flexible(child: Text(AL.of(context).home_add_new_folder, overflow: TextOverflow.ellipsis,))
                                 ],
                                 ),
                               ),
@@ -187,7 +191,7 @@ Widget selectFolder(Folders folder, index,indexSelected){
               color: index == indexSelected ? Colors.black.withOpacity(0.3) : null,
               borderRadius: BorderRadius.circular(3)
             ),
-            child: Text(folder.title)),
+            child: Text(folder.title, overflow: TextOverflow.ellipsis,)),
       )
     ],
   );

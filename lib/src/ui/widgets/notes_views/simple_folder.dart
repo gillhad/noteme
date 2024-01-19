@@ -32,9 +32,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
         child: Row(
           crossAxisAlignment: !user.settings.simpleMode ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
-            if(folder.pinned) const Padding(
-                padding: EdgeInsets.all(5),
-                child: Icon(Icons.push_pin_outlined)),
+
             const Padding(
                 padding:  EdgeInsets.all(5),
                 child:  Icon(Icons.folder)),
@@ -64,6 +62,9 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
               ),
             ),
             const Spacer(flex: 1,),
+            if(folder.pinned) const Padding(
+                padding: EdgeInsets.all(5),
+                child: Icon(Icons.push_pin_outlined)),
             Flexible(
               child: Container(
                 alignment: Alignment.center,
@@ -72,7 +73,7 @@ Widget folderItem(context,Folders folder,Function openFolder,WidgetRef ref){
                   await folderOptionsDialog(context, ref, folder);
                 }, icon: const Icon(Icons.more_vert)),
               ),
-            )
+            ),
           ],
         ),
       ),
