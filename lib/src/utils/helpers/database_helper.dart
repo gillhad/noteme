@@ -40,20 +40,26 @@ class DataBaseHelper{
     List<NoteClass> items = [];
     print("helper nots in folders");
    var response = await DatabaseInfo.getNotesInFolder(folderId);
-   print(response);
    response.forEach((note){
      items.add(NoteClass.fromJson(note));
    });
 return items;
   }
 
-  static Future updateFolderNotes(int? folderId, int noteId)async{
+  static Future updateFolderNotes(ref,int? folderId, int noteId)async{
       var response = await DatabaseInfo.noteToFolder(noteId,folderId);
+      ref.read(listProvider.notifier).getAll();
   }
 
   static Future createFolder(Folders folder, WidgetRef ref)async{
     var response = await DatabaseInfo.addNewFolder(folder);
     ref.read(listProvider.notifier).add(response);
+  }
+
+  static Future createAndAddToFolder(Folders folder,NoteClass note, WidgetRef ref)async{
+    var response = await DatabaseInfo.addNewFolder(folder);
+    await updateFolderNotes(ref, response.id,note.id);
+
   }
 
 

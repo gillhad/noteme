@@ -42,7 +42,6 @@ class DatabaseInfo {
       try {
         await db!.insert('folders', folder.toMap());
         var newFolder = await db!.rawQuery('SELECT * FROM folders ORDER BY id DESC LIMIT 1');
-        print("devuelvo nota $newFolder");
         return Folders.fromJson(newFolder[0]);
       } catch (e,s) {
         print(e);
@@ -54,7 +53,7 @@ class DatabaseInfo {
    static noteToFolder(int noteId, int? folderId) async {
       try {
         await db!.update(
-            "notes", {"folder_id": folderId}, where: 'id = noteId');
+            "notes", {"folder_id": folderId}, where: 'id = $noteId');
       } catch (e) {
         return false;
       }
@@ -71,7 +70,7 @@ class DatabaseInfo {
 
    static deleteFolder(folderId) async {
      try {
-       await db!.delete("folder", where: 'id=$folderId');
+       await db!.delete("folders", where: 'id=$folderId');
      } catch (e) {
        return false;
      }
@@ -79,13 +78,11 @@ class DatabaseInfo {
 
    static updateNote(NoteClass note) async{
      try {
-       var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
-       print("Actualizo nota $oldNote");
+       // var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
        await db!.update(
            "notes", note.toMap(), where: 'id = ${note.id}');
        var newNote = await db!.rawQuery('SELECT * FROM notes WHERE id=  ${note.id}');
-       print("devuelvo nota $newNote");
-       return true;
+       return newNote;
      } catch (e) {
        return false;
      }

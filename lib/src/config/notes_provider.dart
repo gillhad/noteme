@@ -11,10 +11,6 @@ import '../models/note_model.dart';
 
 
 
-// final itemsRepository = Provider<NoteProvider>(
-//         (ref) => NoteProvider(ref)
-// );
-
 final listProvider = StateNotifierProvider<ItemListState, List<ItemModel>>(ItemListState.new);
 
 class ItemListState extends StateNotifier<List<ItemModel>>{
@@ -43,11 +39,8 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     sort();
     state = [...state];
   }
-  
-  
 
   Future add(item)async{
-    print(state.length);
     if(item is NoteClass) {
       var newNote =  await DatabaseInfo.addNewNote(item);
       state.insert(0,newNote);
@@ -84,8 +77,8 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   Future remove(item)async{
     if(item is NoteClass) {
       await DatabaseInfo.deleteNote(item.id);
-    }else{
-      // await _ref.read(itemsRepository).deleteNote(item);
+    }else if(item is Folders){
+      await DatabaseInfo.deleteFolder(item.id);
     }
     state.remove(item);
     state = [...state];

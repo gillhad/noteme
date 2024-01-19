@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:noteme/src/config/notes_provider.dart';
+import 'package:noteme/src/utils/helpers/database_helper.dart';
 
 import '../../../models/folder_model.dart';
 import '../../../models/note_model.dart';
+import '../../../utils/dialog_manager.dart';
 
 noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
   return showDialog(
@@ -59,62 +61,120 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
 
 showFolders(context,WidgetRef ref,NoteClass note){
   var list = ref.watch(listProvider.notifier).getFolders();
-  print(list);
   int? indexSelected;
-  //TODO: if no folders, create new one
-  return showDialog(
+  if(list.isEmpty){
+    addNewFolder(context,ref, note);
+  }else {
+    //TODO: if no folders, create new one
+    return showDialog(
       context: context,
       builder: (context) {
-    return StatefulBuilder(
-      builder: (context, state) {
-
-        return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height/2
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ListView.builder(
-                    padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 17),
-                      shrinkWrap: true,
-                      itemCount: list.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                            onTap: (){
-                              state((){
-                                if(indexSelected==index){
-                                 indexSelected = null;
-                                }else {
-                                  indexSelected = index;
-                                }
-                                print(indexSelected);
-                              });
-                            },
-                            child: selectFolder(list[index],index,indexSelected));
-                      }),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(onPressed: (){GoRouter.of(context).pop();}, child:Text(AL.of(context).cancel)),
-                      TextButton(onPressed: (){
-                        if(indexSelected!=null) {
-                          note.folderId = list[indexSelected].id;
-                          ref.read(listProvider.notifier).addToFolder(note);
-                          GoRouter.of(context).pop();
-                        }
-                      }, child:Text(AL.of(context).accept)),
-                    ],
+        return StatefulBuilder(
+            builder: (context, state) {
+              return Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        maxHeight: MediaQuery
+                            .of(context)
+                            .size
+                            .height / 2
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListView.builder(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 17),
+                            shrinkWrap: true,
+                            itemCount: list.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                  onTap: () {
+                                    state(() {
+                                      if (indexSelected == index) {
+                                        indexSelected = null;
+                                      } else {
+                                        indexSelected = index;
+                                      }
+                                    });
+                                  },
+                                  child: selectFolder(
+                                      list[index], index, indexSelected));
+                            }),
+                        GestureDetector(
+                          onTap: () async{
+                            await addNewFolder(context,ref, note);
+                            GoRouter.of(context).pop();
+                          },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 17),
+                              child: Container(
+                                child: Row(
+                                children: [
+                                Icon(Icons.add),
+                                Text(AL.of(context).home_add_new_folder)
+                                ],
+                                ),
+                              ),
+                            ),
+                            ),
+                            Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                            TextButton(onPressed: () {
+                            GoRouter.of(context).pop();
+                            }, child: Text(AL
+                                .of(context)
+                                .cancel)),
+                            TextButton(onPressed: () {
+                            if (indexSelected != null) {
+                            note.folderId = list[indexSelected].id;
+                            ref.read(listProvider.notifier).addToFolder(
+                            note);
+                            GoRouter.of(context).pop();
+                            GoRouter.of(context).pop();
+                            }
+                          }, child: Text(AL
+                                .of(context)
+                                .accept)),
+                          ],
+                        )
+                      ],
+                    ),
                   )
-                ],
-              ),
-            ));
-      }
-    );
+              );
+            }
+        );
       },
-  );
+    );
+  }
+}
+
+ addNewFolder(context, WidgetRef ref, note){
+  TextEditingController _folderTitleController = TextEditingController();
+  return DialogManager().showCustomDialog(context,
+      title: AL.of(context).home_add_folder_title,
+      content: TextFormField(
+        controller: _folderTitleController,
+      ),
+      onCancel: () {
+        GoRouter.of(context).pop();
+      },
+      onAccept: () async{
+        Folders newFolder = Folders(title: _folderTitleController.text, creationTime: DateTime.now());
+        try {
+          await DataBaseHelper.createAndAddToFolder(newFolder, note, ref);
+          _folderTitleController.clear();
+          GoRouter.of(context).pop();
+          GoRouter.of(context).pop();
+        }catch(e){
+
+        }
+
+
+      });
 }
 
 Widget selectFolder(Folders folder, index,indexSelected){

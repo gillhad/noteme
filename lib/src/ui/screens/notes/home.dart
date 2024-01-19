@@ -291,8 +291,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       Folders newFolder = Folders(title: _folderTitleController.text, creationTime: DateTime.now());
       try {
         await ref.read(listProvider.notifier).add(newFolder);
-        print("ref.watch(listProvider)");
-        print(ref.watch(listProvider));
         _folderTitleController.clear();
         setState(() {
 

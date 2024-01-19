@@ -57,11 +57,11 @@ renameDialog(context, ref, folder);
                                 .of(context)
                                 .dialog_delete,
                             onPressed: () async {
-                              if (!folder.notes.isEmpty) {
+                              if (folder.notes.isEmpty) {
                                 ref.read(listProvider.notifier).remove(folder);
                                 GoRouter.of(context).pop();
                               } else {
-                                //TODO: delete everything inside os move outside?
+                                //TODO: delete everything inside or move outside?
                                 deleteOptions(context,ref,folder);
                               }
                             }),
