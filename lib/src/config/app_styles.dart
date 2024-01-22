@@ -31,6 +31,7 @@ ThemeData appTheme(BuildContext context, bool isDarkTheme) {
         titleTextStyle: textTheme.headlineMedium,
       ),
       inputDecorationTheme: InputDecorationTheme(
+          contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 17),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),
@@ -42,7 +43,7 @@ ThemeData appTheme(BuildContext context, bool isDarkTheme) {
           )));
 }
 
-TextTheme textTheme = TextTheme(
+TextTheme textTheme = const TextTheme(
   labelSmall: TextStyle(fontSize: 8, fontWeight: FontWeight.w500),
   labelMedium: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
   labelLarge: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),

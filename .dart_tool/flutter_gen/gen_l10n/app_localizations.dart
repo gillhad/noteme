@@ -133,6 +133,12 @@ abstract class AL {
   /// **'Añade un título'**
   String get home_add_folder_title;
 
+  /// No description provided for @home_search_hint.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar...'**
+  String get home_search_hint;
+
   /// No description provided for @settings.
   ///
   /// In es, this message translates to:

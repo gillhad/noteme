@@ -26,6 +26,9 @@ class ALEs extends AL {
   String get home_add_folder_title => 'Añade un título';
 
   @override
+  String get home_search_hint => 'Buscar...';
+
+  @override
   String get settings => 'Ajustes';
 
   @override

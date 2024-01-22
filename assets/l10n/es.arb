@@ -13,6 +13,7 @@
 "home_add_new_note":"Nueva nota",
 "home_add_new_folder":"Nueva carpeta",
 "home_add_folder_title":"Añade un título",
+"home_search_hint":"Buscar...",
 
 "@@_SETTINGS":{},
 "settings":"Ajustes",

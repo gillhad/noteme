@@ -34,7 +34,6 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
 
   void getAll()async{
-    // state = [];
     allItems = await DataBaseHelper.getAll();
     await sort(allItems);
     state = allItems;
@@ -97,7 +96,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     return newItems;
   }
 
-  getSearch(searchString){
+  getSearch(searchString)async{
     if(searchString.isEmpty){
       getAll();
       return;
@@ -113,12 +112,16 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
         }
       }
     }
+    await sort(newList);
     state = newList;
+
   }
 
   Future sort(List<ItemModel> list)async{
    list.sort((a,b){
-     if(a.pinned && !b.pinned){
+     if(!a.pinned && b.pinned){
+       return 1;
+     }else if(a.pinned && !b.pinned){
        return -1;
      }
      if(a.updateTime!=null && b.updateTime!=null){

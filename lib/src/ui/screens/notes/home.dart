@@ -253,9 +253,8 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
       child: TextFormField(
         controller: _searchController,
         onTap: () {
-          Future.delayed(Duration(milliseconds: 200));
+          Future.delayed(const Duration(milliseconds: 200));
           setState(() {
-            print("tap");
           });
         },
         onChanged: (value) {
@@ -265,7 +264,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
           //TODO: check cursor color
           fillColor: AppColors.secondaryDark,
           filled: true,
-          icon: const Icon(Icons.search),
+            hintText: AL.of(context).home_search_hint,
         ),
       ),
     );

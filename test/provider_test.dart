@@ -21,14 +21,18 @@ void main() {
     test('Sort by dates', () {
       // Arrange
       var yourList = [
-        ItemModel.fromOther(1,"second", null,DateTime(2021, 1, 2)),
         ItemModel.fromOther(0,"third",  DateTime(2021, 1, 4),DateTime(2021, 1, 1)),
+        ItemModel.fromOther(1,"second", null,DateTime(2021, 1, 2)),
         ItemModel.fromOther(2,"first",  null,DateTime(2021, 1, 3)),
       ];
 
+      yourList[1].pinned = true;
 
       // Act
       yourList.sort((a,b){
+        if(!a.pinned && b.pinned){
+          return -1;
+        }
         if(a.updateTime!=null && b.updateTime!=null){
           if(a.updateTime!.isBefore(b.updateTime!)){
             return 1;
@@ -50,7 +54,7 @@ void main() {
             }
           }
         }
-      }); // Call your sort function
+      });
 
       // Assert
       expect(yourList, [

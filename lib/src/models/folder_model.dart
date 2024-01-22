@@ -46,7 +46,9 @@ class Folders extends ItemModel {
 
   sortItems() {
     notes.sort((a, b) {
-      if (a.pinned && !b.pinned) {
+      if(!a.pinned && b.pinned){
+        return 1;
+      }else if(a.pinned && !b.pinned){
         return -1;
       }
       if (a.updateTime != null && b.updateTime != null) {
@@ -90,6 +92,6 @@ class Folders extends ItemModel {
 
   @override
   String toString() {
-    return "title: $title, id:$id, creationTime:$creationTime, updateTime:$updateTime";
+    return "title: $title, id:$id, creationTime:$creationTime, updateTime:$updateTime, pinned:$pinned";
   }
 }
