@@ -15,11 +15,11 @@ import 'package:noteme/src/ui/widgets/dialogs/dialog_manager_note.dart';
 import '../../../models/user.dart';
 
 ///Views for different notes in the home page
-Widget noteItem(context,NoteClass note,WidgetRef ref){
+Widget noteItem(context,NoteClass note,WidgetRef ref, Function openNote){
  User? user =  ref.watch(userState);
   return GestureDetector(
     onTap: (){
-      GoRouter.of(context).push(routes.noteView, extra: note);
+     openNote(note);
     },
     child: Container(
       width: MediaQuery.of(context).size.width,

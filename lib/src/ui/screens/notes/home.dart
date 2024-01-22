@@ -45,9 +45,10 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   bool _isSearching = false;
   bool _keyboard = false;
 
+
   @override
   void initState() {
-    //TODO: set draweer pos from settings
+    //TODO: set drawer pos from settings
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
@@ -93,16 +94,13 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   }
 
   updateShowList() {
-    if(showList.isEmpty){
-      showList.addAll(ref.watch(listProvider));
-    }
+    // if(showList.isEmpty){
+    //   showList.addAll(ref.watch(listProvider));
+    // }
     ref.listen(listProvider, (previous, next) {
-      print("cambios en la lista");
-      print(previous);
-      print(next);
       showList.clear();
+
       showList.addAll(next);
-      print(showList.length);
       setState(() {});
     });
     // print("repintamos las funciones");
@@ -122,7 +120,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
               });
             },
             icon: Icon(Icons.search)),
-
         ///TODO: add filters by tag?
         // Icon(Icons.filter),
         ///TODO: Add extra option
@@ -269,8 +266,6 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
           fillColor: AppColors.secondaryDark,
           filled: true,
           icon: const Icon(Icons.search),
-          suffixIcon:
-              IconButton(onPressed: _clearText, icon: const Icon(Icons.close)),
         ),
       ),
     );
@@ -307,7 +302,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   showItem(context, WidgetRef ref, index) {
     if (showList[index] is NoteClass) {
-      return noteItem(context, showList[index], ref);
+      return noteItem(context, showList[index], ref, _openNote);
     } else if (showList[index] is Folders) {
       return folderItem(context, showList[index], _openFolder, ref);
     } else {
@@ -315,20 +310,23 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
     }
   }
 
-  _clearText() {
-    setState(() {
-      _searchController.clear();
-    });
-    showList.addAll(itemsList);
-  }
 
   _openFolder(folder) {
+    setState(() {
+      _isSearching = false;
+    });
     GoRouter.of(context).push(routes.folderView,extra: folder);
   }
 
+  _openNote(note){
+    // setState(() {
+      _isSearching = false;
+    // });
+    GoRouter.of(context).push(routes.noteView,extra: note);
+  }
+
   _searchItems(searchString) {
-    print(searchString);
-    showList.clear();
+    // showList.clear();
     if (_searchTimer?.isActive ?? false) {
       _searchTimer!.cancel();
     }

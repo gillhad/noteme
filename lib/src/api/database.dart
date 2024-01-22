@@ -64,7 +64,6 @@ class DatabaseInfo {
       try {
         await db!.delete("notes", where: 'id = $noteId');
       } catch (e) {
-        print("no se ha eliminado");
         return false;
       }
     }
@@ -80,14 +79,12 @@ class DatabaseInfo {
    static updateNote(NoteClass note) async{
      try {
        var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
-       print("nota anterior $oldNote");
        await db!.update(
            "notes", note.toMap(), where: 'id = ${note.id}');
        if(note.folderId!=null){
          await db!.update('folders', {"update_time":TimeManager.dateTimeToDB(DateTime.now())},where: 'id = ${note.folderId}');
        }
        var newNote = await db!.rawQuery('SELECT * FROM notes WHERE id=  ${note.id}');
-       print("nota actualizada $newNote");
        return newNote;
      } catch (e) {
        return false;
@@ -126,7 +123,6 @@ class DatabaseInfo {
     ///Return all notes not in folders
   static getNotes()async{
     var info = await db!.rawQuery('SELECT * FROM notes WHERE folder_id IS NULL');
-    print(info);
     return info;
   }
 

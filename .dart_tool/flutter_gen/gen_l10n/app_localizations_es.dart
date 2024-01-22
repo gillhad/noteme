@@ -56,6 +56,9 @@ class ALEs extends AL {
   String get dialog_add_folder => 'Añadir a carpeta';
 
   @override
+  String get dialog_move_folder => 'Mover de carpeta';
+
+  @override
   String get dialog_delete => 'Eliminar';
 
   @override

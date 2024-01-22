@@ -38,7 +38,6 @@ class DataBaseHelper{
 
   static Future getNoteInFolders(folderId) async{
     List<NoteClass> items = [];
-    print("helper nots in folders");
    var response = await DatabaseInfo.getNotesInFolder(folderId);
    response.forEach((note){
      items.add(NoteClass.fromJson(note));

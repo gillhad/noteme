@@ -25,7 +25,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     try {
       state = await DataBaseHelper.getAll();
       allItems = await DataBaseHelper.getAll();
-      sort();
+      await sort(state);
     }catch(e,s){
       print(e);
       print(s);
@@ -34,9 +34,10 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
 
   void getAll()async{
+    // state = [];
     allItems = await DataBaseHelper.getAll();
+    await sort(allItems);
     state = allItems;
-    sort();
     state = [...state];
   }
 
@@ -50,13 +51,12 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
         state.insert(0,newFolder);
       }
     }
-    sort();
+    await sort(state);
       state= [...state];
   }
 
   Future update(item)async{
     if(item is NoteClass){
-      print(item);
       await DatabaseInfo.updateNote(item);
     }else if(item is Folders){
       await DatabaseInfo.updateFolder(item);
@@ -67,7 +67,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
       state[state.indexWhere((listItem) =>
       listItem.id == item.id && listItem.runtimeType == item.runtimeType)] =
           item;
-    sort();
+    await sort(state);
     state = [...state];
     }else{
       getAll();
@@ -92,7 +92,6 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   }
 
   getFolders(){
-    print(state);
     var newItems = [];
     newItems.addAll(state.whereType<Folders>());
     return newItems;
@@ -100,8 +99,8 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   getSearch(searchString){
     if(searchString.isEmpty){
-      print("get all");
       getAll();
+      return;
     }
       List<ItemModel> newList = [];
     for (var item in allItems) {
@@ -117,8 +116,8 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
     state = newList;
   }
 
-  sort()async{
-   state.sort((a,b){
+  Future sort(List<ItemModel> list)async{
+   list.sort((a,b){
      if(a.pinned && !b.pinned){
        return -1;
      }
@@ -144,7 +143,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
        }
      }
     });
-   state = [...state];
+   // state = [...state];
   }
 }
 
