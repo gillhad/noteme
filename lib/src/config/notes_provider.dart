@@ -56,6 +56,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
 
   Future update(item)async{
     if(item is NoteClass){
+      print("update note");
       await DatabaseInfo.updateNote(item);
     }else if(item is Folders){
       await DatabaseInfo.updateFolder(item);

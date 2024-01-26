@@ -5,6 +5,11 @@
 "delete":"Eliminar",
 "cancel":"Cancelar",
 "accept":"Aceptar",
+"day":"Día",
+"month":"Mes",
+"year":"Año",
+"hour":"Hora",
+"minute":"Minuto",
 
 "@@_MAIN":{},
 "main_title":"NoteMe",
@@ -37,6 +42,7 @@
 "dialog_folder_not_empty":"Eliminar carpeta",
 "dialog_folder_msg":"La carpeta contiene notas, deseas eliminarlas o mantenerlas?",
 "dialog_folder_keep":"Mantener",
+"dialog_add_reminder":"Elige la fecha del recordatiorio",
 
 
 "@@_ERRORS":{},

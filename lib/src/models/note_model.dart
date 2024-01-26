@@ -7,37 +7,25 @@ import 'package:noteme/src/utils/time_%20manager.dart';
 
 
 class NoteClass extends ItemModel{
-// late int id;
-// late String title;
 late String content;
 String? tag;
-// Color? color;
 Icon? icon;
 bool hidden = false;
-// bool pinned = false;
 int? folderId;
 File? background;
 DateTime? reminderTime;
-// DateTime? updateTime;
-// late DateTime creationTime;
 DateTime? deleteTime;
 
 NoteClass({required super.title,required this.content, required super.creationTime});
 
 NoteClass.fromJson(json) : super.fromJson(json){
-  // id = json["id"];
-  // title = json["title"];
   content = json["content"];  
   tag = json["tag"];
-  // color = json["color"];
   icon = json["icon"];
   hidden = json["hidden"] == 1 ? true :false;
-  // pinned = json["pinned"]  == 1 ? true :false;
   folderId = json["folder_id"];
   background = json["background"];
   reminderTime = TimeManager.databaseToDateTime(json["reminder_time"]);
-  // updateTime = TimeManager.databaseToDateTime(json["update_time"]);
-  // creationTime = TimeManager.databaseToDateTime(json["creation_time"])!;
   deleteTime = TimeManager.databaseToDateTime(json["delete_time"]);
   
 }

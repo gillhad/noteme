@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="fix minor issue on search (draw twice)">
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Change search bar&#10;-add hint&#10;- remove icon">
+      <change afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/date_time_picker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/app_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_styles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/globals.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/globals.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/provider_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/provider_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705915942678</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Change search bar&#10;-add hint&#10;- remove icon">
+      <option name="closed" value="true" />
+      <created>1705917068023</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1705917068023</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -344,6 +355,7 @@
     <MESSAGE value="manage pinned items" />
     <MESSAGE value="edit folder title" />
     <MESSAGE value="fix minor issue on search (draw twice)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix minor issue on search (draw twice)" />
+    <MESSAGE value="Change search bar&#10;-add hint&#10;- remove icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change search bar&#10;-add hint&#10;- remove icon" />
   </component>
 </project>

@@ -109,6 +109,36 @@ abstract class AL {
   /// **'Aceptar'**
   String get accept;
 
+  /// No description provided for @day.
+  ///
+  /// In es, this message translates to:
+  /// **'Día'**
+  String get day;
+
+  /// No description provided for @month.
+  ///
+  /// In es, this message translates to:
+  /// **'Mes'**
+  String get month;
+
+  /// No description provided for @year.
+  ///
+  /// In es, this message translates to:
+  /// **'Año'**
+  String get year;
+
+  /// No description provided for @hour.
+  ///
+  /// In es, this message translates to:
+  /// **'Hora'**
+  String get hour;
+
+  /// No description provided for @minute.
+  ///
+  /// In es, this message translates to:
+  /// **'Minuto'**
+  String get minute;
+
   /// No description provided for @main_title.
   ///
   /// In es, this message translates to:
@@ -252,6 +282,12 @@ abstract class AL {
   /// In es, this message translates to:
   /// **'Mantener'**
   String get dialog_folder_keep;
+
+  /// No description provided for @dialog_add_reminder.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige la fecha del recordatiorio'**
+  String get dialog_add_reminder;
 
   /// No description provided for @error_empty.
   ///

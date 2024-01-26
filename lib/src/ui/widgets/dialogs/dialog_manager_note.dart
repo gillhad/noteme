@@ -5,7 +5,9 @@ import 'package:noteme/src/config/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/item_model.dart';
+import 'package:noteme/src/ui/widgets/dialogs/date_time_picker.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
+import 'package:noteme/src/utils/time_%20manager.dart';
 
 import '../../../models/folder_model.dart';
 import '../../../models/note_model.dart';
@@ -42,8 +44,12 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
 
                       ///OPTION3
                       optionDialog(
-                          text: AL.of(context).dialog_reminder, onPressed: () {
-
+                          text: AL.of(context).dialog_reminder, onPressed: ()async {
+                        var reminderDate = await showCustomDateTimePicker(context, monthType: MonthType.full,initialDate: note.reminderTime);
+                        if(reminderDate!=null) {
+                          note.reminderTime = reminderDate;
+                          ref.read(listProvider.notifier).update(note);
+                        }
                       }),
                       ///OPTION4
                       optionDialog(

@@ -14,6 +14,21 @@ class ALEs extends AL {
   String get accept => 'Aceptar';
 
   @override
+  String get day => 'Día';
+
+  @override
+  String get month => 'Mes';
+
+  @override
+  String get year => 'Año';
+
+  @override
+  String get hour => 'Hora';
+
+  @override
+  String get minute => 'Minuto';
+
+  @override
   String get main_title => 'NoteMe';
 
   @override
@@ -84,6 +99,9 @@ class ALEs extends AL {
 
   @override
   String get dialog_folder_keep => 'Mantener';
+
+  @override
+  String get dialog_add_reminder => 'Elige la fecha del recordatiorio';
 
   @override
   String get error_empty => 'Este valor es obligatorio';

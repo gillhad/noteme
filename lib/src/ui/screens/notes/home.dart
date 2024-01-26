@@ -84,19 +84,24 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
    updateShowList();
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      appBar: _appBar(context),
-      body: _content(context),
-      drawer: _drawer(context),
-      floatingActionButton: _keyboard ? null : _addNew(context),
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).focusedChild?.unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        appBar: _appBar(context),
+        body: _content(context),
+        drawer: _drawer(context),
+        floatingActionButton: _keyboard ? null : _addNew(context),
+      ),
     );
   }
 
   updateShowList() {
-    // if(showList.isEmpty){
-    //   showList.addAll(ref.watch(listProvider));
-    // }
+    if(showList.isEmpty){
+      showList.addAll(ref.watch(listProvider));
+    }
     ref.listen(listProvider, (previous, next) {
       showList.clear();
 
@@ -122,11 +127,11 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
             icon: Icon(Icons.search)),
         ///TODO: add filters by tag?
         // Icon(Icons.filter),
-        ///TODO: Add extra option
-        IconButton(
-            onPressed: () async {
-            },
-            icon: Icon(Icons.more_vert)),
+        ///TODO: Add extra option?
+        // IconButton(
+        //     onPressed: () async {
+        //     },
+        //     icon: Icon(Icons.more_vert)),
       ],
     );
   }
@@ -166,18 +171,21 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
         ),
         IconButton(
             onPressed: () {
+              FocusScope.of(context).focusedChild?.unfocus();
               setState(() {
                 _drawerPos = 0;
                 _drawerOptions();
               });
             },
+          color: _drawerPos == 0 ? null :AppColors.redNote.withOpacity(0.2),
             icon: Icon(
               Icons.all_inbox,
-              color: AppColors.grey,
+              // color: AppColors.grey,
               size: MediaQuery.of(context).size.width / 7,
             )),
         IconButton(
             onPressed: () {
+              FocusScope.of(context).focusedChild?.unfocus();
               setState(() {
                 _drawerPos = 1;
                 _drawerOptions();
@@ -185,7 +193,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
             },
             icon: Icon(
               Icons.folder,
-              color: AppColors.grey,
+              color: _drawerPos == 1 ? null : AppColors.redNote.withOpacity(0.2),
               size: MediaQuery.of(context).size.width / 7,
             )),
       ],
@@ -301,6 +309,9 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
 
   showItem(context, WidgetRef ref, index) {
     if (showList[index] is NoteClass) {
+      if(_drawerPos == 1){
+        return Container();
+      }
       return noteItem(context, showList[index], ref, _openNote);
     } else if (showList[index] is Folders) {
       return folderItem(context, showList[index], _openFolder, ref);
@@ -338,15 +349,9 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
   }
 
   _drawerOptions() {
-    print("clear");
-    showList.clear();
     switch (_drawerPos) {
       case 0:
       case 1:
-        showList.addAll(itemsList.where((element) => element is Folders));
-        setState(() {
-          // _currentFolder = null;
-        });
     }
   }
 }
