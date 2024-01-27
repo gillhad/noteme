@@ -34,7 +34,7 @@ class DialogManager {
 
 dialogAddFolder(context,WidgetRef ref){
   return showDialog(context: context, builder: (context){
-    return AlertDialog(
+    return const AlertDialog(
       title: Text("Añade un título"),
       content: Text("el título que pondrás"),
       actions: [

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
 import 'package:noteme/src/utils/time_%20manager.dart';

@@ -7,7 +7,6 @@ import 'package:noteme/src/config/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:noteme/src/config/app_styles.dart';
 
-import '../../../config/globals.dart';
 
 final List<int> minutes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
 final List<int> hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
@@ -55,7 +54,7 @@ async {
 
 class DateTimeCustomPicker extends StatefulWidget {
 const DateTimeCustomPicker(
-      {this.initialDate,
+      {super.key, this.initialDate,
         this.monthType,
         this.restorationId});
 

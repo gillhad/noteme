@@ -1,17 +1,12 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/ui/widgets/dialogs/dialog_folder.dart';
-import 'package:noteme/src/utils/dialog_manager.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../config/app_styles.dart';
-import '../../../config/globals.dart';
 import '../../../config/providers.dart';
 import '../../../models/user.dart';
 

@@ -1,14 +1,9 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/app_styles.dart';
-import 'package:noteme/src/config/globals.dart';
-import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/providers.dart';
-import 'package:noteme/src/models/arguments.dart';
 import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/ui/widgets/dialogs/dialog_manager_note.dart';
 
@@ -64,7 +59,7 @@ Widget noteItem(context,NoteClass note,WidgetRef ref, Function openNote){
                 alignment: Alignment.topCenter,
                 padding: EdgeInsets.zero,onPressed: ()async{
               await noteOptionsDialog(context,ref,note);
-            }, icon: Icon(Icons.more_vert)),
+            }, icon: const Icon(Icons.more_vert)),
           )
         ],
       ),
@@ -73,7 +68,7 @@ Widget noteItem(context,NoteClass note,WidgetRef ref, Function openNote){
 }
 
 Widget _moreInfo(){
-  return Column(
+  return const Column(
     children: [
 
     ],

@@ -8,7 +8,6 @@ import 'package:noteme/src/utils/form_validation.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/notes_provider.dart';
 import '../../../models/folder_model.dart';
-import '../../../models/folder_model.dart';
 
 folderOptionsDialog(context, WidgetRef ref, Folders folder) {
   return showDialog(

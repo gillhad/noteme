@@ -3,7 +3,6 @@ import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/item_model.dart';
-import 'package:sqflite/sqlite_api.dart';
 
 import '../../models/note_model.dart';
 

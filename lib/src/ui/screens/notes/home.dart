@@ -3,25 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
-import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/app_colors.dart';
-import 'package:noteme/src/config/app_styles.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/notes_provider.dart';
-import 'package:noteme/src/config/providers.dart';
-import 'package:noteme/src/models/arguments.dart';
 import 'package:noteme/src/models/folder_model.dart';
 import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/utils/dialog_manager.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_folder.dart';
 import 'package:noteme/src/ui/widgets/notes_views/simple_note.dart';
-import 'package:noteme/src/utils/helpers/database_helper.dart';
-import 'package:noteme/src/utils/helpers/user_helper.dart';
 
-import '../../../models/user.dart';
 
 class Home extends ConsumerStatefulWidget {
   const Home({super.key});
@@ -31,8 +22,8 @@ class Home extends ConsumerStatefulWidget {
 }
 
 class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
-  var _searchController = TextEditingController();
-  var _folderTitleController = TextEditingController();
+  final _searchController = TextEditingController();
+  final _folderTitleController = TextEditingController();
 
 
   List<dynamic> itemsList = [];
@@ -124,7 +115,7 @@ class _HomeState extends ConsumerState<Home> with WidgetsBindingObserver {
                 _isSearching = !_isSearching;
               });
             },
-            icon: Icon(Icons.search)),
+            icon: const Icon(Icons.search)),
         ///TODO: add filters by tag?
         // Icon(Icons.filter),
         ///TODO: Add extra option?

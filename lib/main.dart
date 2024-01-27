@@ -3,11 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/app.dart';
-import 'package:noteme/src/config/providers.dart';
 import 'package:noteme/src/models/user.dart';
 import 'package:noteme/src/utils/helpers/user_helper.dart';
 import 'package:path/path.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 
 void main() async{
@@ -29,6 +27,6 @@ void main() async{
 
 
 
-  runApp(ProviderScope(child: NoteMe()));
+  runApp(const ProviderScope(child: NoteMe()));
 }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:noteme/src/config/app_styles.dart';
 import 'package:noteme/src/ui/screens/settings/settings.dart';
 
 import '../../config/providers.dart';
@@ -12,7 +11,7 @@ class MainHolder extends ConsumerWidget {
    MainHolder({super.key});
 
    int barIndex = 0;
- final List<Widget> screens = [ Home(), Settings()];
+ final List<Widget> screens = [ const Home(), const Settings()];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,9 +36,9 @@ class MainHolder extends ConsumerWidget {
               barIndex = ref.watch(mainHolderProvider);
           },
           items: [
-            CustomBottombarItem(icon: Icon(Symbols.ac_unit), label: "Home"),
+            CustomBottombarItem(icon: const Icon(Symbols.ac_unit), label: "Home"),
             CustomBottombarItem(
-                icon: Icon(Symbols.settings), label: "Settings"),
+                icon: const Icon(Symbols.settings), label: "Settings"),
           ]);
     }
 

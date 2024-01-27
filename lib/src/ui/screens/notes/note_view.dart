@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:noteme/src/api/database.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/notes_provider.dart';
@@ -21,8 +19,8 @@ class NoteView extends ConsumerStatefulWidget {
 
   class _NoteViewState extends ConsumerState<NoteView>{
   late NoteClass? currentNote;
-  var _titleController = TextEditingController();
-  var _noteController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _noteController = TextEditingController();
 
   Timer? updateTimer;
 
@@ -51,7 +49,7 @@ class NoteView extends ConsumerStatefulWidget {
   }
   AppBar _appBar(){
     return AppBar(
-      title: Container(
+      title: SizedBox(
         width: double.infinity,
         height: 40,
         child: Row(
@@ -67,7 +65,7 @@ class NoteView extends ConsumerStatefulWidget {
         onPressed: (){
           GoRouter.of(context).pop();
         },
-        icon: Icon(Icons.chevron_left, size: 30,),
+        icon: const Icon(Icons.chevron_left, size: 30,),
       ),
       leadingWidth: 20,
       elevation: 4,
@@ -170,7 +168,7 @@ class NoteView extends ConsumerStatefulWidget {
     print(s);
         }
         }else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Debes añadir almenos un título")));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Debes añadir almenos un título")));
         // GoRouter.of(context).go(routes.mainHolder);
       }
     }, icon: widget.note !=null ? const Icon(Icons.edit) : const Icon(Icons.save));

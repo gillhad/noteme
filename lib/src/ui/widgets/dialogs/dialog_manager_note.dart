@@ -4,10 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:noteme/src/config/notes_provider.dart';
-import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/ui/widgets/dialogs/date_time_picker.dart';
 import 'package:noteme/src/utils/helpers/database_helper.dart';
-import 'package:noteme/src/utils/time_%20manager.dart';
 
 import '../../../models/folder_model.dart';
 import '../../../models/note_model.dart';
@@ -18,7 +16,6 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
       context: context,
       barrierDismissible: true,
       builder: (context) {
-            bool addToFolder = false;
         return StatefulBuilder(
           builder: (context, setState) {
             return Dialog(
@@ -122,7 +119,7 @@ showFolders(context,WidgetRef ref,NoteClass note){
                               child: Container(
                                 child: Row(
                                 children: [
-                                Icon(Icons.add),
+                                const Icon(Icons.add),
                                 Flexible(child: Text(AL.of(context).home_add_new_folder, overflow: TextOverflow.ellipsis,))
                                 ],
                                 ),

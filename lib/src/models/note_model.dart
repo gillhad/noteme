@@ -52,7 +52,7 @@ toMap(){
 updateNote(title,content){
   this.title = title;
   this.content = content;
-  this.updateTime = DateTime.now();
+  updateTime = DateTime.now();
 }
 
 @override

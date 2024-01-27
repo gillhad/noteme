@@ -2,9 +2,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/app_styles.dart';
-import 'package:noteme/src/config/globals.dart';
 import 'package:noteme/src/config/providers.dart';
 
 import '../../widgets/buttons/checkbox_button.dart';
@@ -27,9 +25,9 @@ class _SettingsConfState extends ConsumerState<SettingsConf> {
 
   AppBar _appBar() {
     return AppBar(
-      title: Text("Configuración"),
+      title: const Text("Configuración"),
       leading: IconButton(
-        icon: Icon(Icons.chevron_left,),
+        icon: const Icon(Icons.chevron_left,),
         onPressed: (){
           GoRouter.of(context).pop();
           print(ref.watch(userState)!.settings.simpleMode);

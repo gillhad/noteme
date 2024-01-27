@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:noteme/src/models/settings_model.dart';
 
 class User{

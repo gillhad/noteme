@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/utils/time_%20manager.dart';
 import 'package:sqflite/sqflite.dart';

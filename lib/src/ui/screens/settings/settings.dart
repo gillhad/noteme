@@ -35,12 +35,12 @@ class _SettingsState extends State<Settings> {
 
   Widget _content(){
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
     //Todo: Nombre
-          Text("Nombre del usuario"),
-SizedBox(height: 40,),
+          const Text("Nombre del usuario"),
+const SizedBox(height: 40,),
 _notSwitch(),
     _settingsOption(AL.of(context).setttings_conf,_navigation),
     _settingsOption(AL.of(context).settings_theme,_navigation),
@@ -60,7 +60,7 @@ _notSwitch(),
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 40,
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Row(children: [
         Expanded(child: Text(AL.of(context).settings_not)),
         Switch(value: _notificationStatus, onChanged: (value){
@@ -78,11 +78,11 @@ _notSwitch(),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 40,
-        margin: EdgeInsets.symmetric(vertical: 8),
+        margin: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
             Expanded(child: Text(label, maxLines: 1,)),
-            Icon(Icons.chevron_right)
+            const Icon(Icons.chevron_right)
           ],
         ),
       ),
