@@ -4,35 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Create custome datepicker for adding a reminder to a note&#10;-update note with reminder date">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Fix general code (dart fix)&#10;Improve search to folders (show if folder contain note that match)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/folder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/folder_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/settings_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/settings_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/main_holder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/main_holder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/folder_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_conf.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_conf.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/buttons/checkbox_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/buttons/checkbox_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/date_time_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/date_time_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_folder.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_folder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/helpers/database_helper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/time_ manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/provider_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/provider_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706265957098</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Fix general code (dart fix)&#10;Improve search to folders (show if folder contain note that match)">
+      <option name="closed" value="true" />
+      <created>1706355773868</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1706355773869</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -356,7 +341,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add basic structure&#10;Add Navigation&#10;Add Themes" />
     <MESSAGE value="Add MainHolder&#10;Add Home&#10;Add providers navigation&#10;Add Styles" />
     <MESSAGE value="create widget for folder and note" />
     <MESSAGE value="create settings view&#10;add settingsmodel" />
@@ -381,6 +365,7 @@
     <MESSAGE value="fix minor issue on search (draw twice)" />
     <MESSAGE value="Change search bar&#10;-add hint&#10;- remove icon" />
     <MESSAGE value="Create custome datepicker for adding a reminder to a note&#10;-update note with reminder date" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create custome datepicker for adding a reminder to a note&#10;-update note with reminder date" />
+    <MESSAGE value="Fix general code (dart fix)&#10;Improve search to folders (show if folder contain note that match)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix general code (dart fix)&#10;Improve search to folders (show if folder contain note that match)" />
   </component>
 </project>

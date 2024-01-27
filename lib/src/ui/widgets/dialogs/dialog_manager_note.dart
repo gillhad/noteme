@@ -52,8 +52,7 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
                       optionDialog(
                           text: AL.of(context).dialog_delete,
                           onPressed: () async {
-                            ref.read(listProvider.notifier).remove(note);
-                            GoRouter.of(context).pop();
+                            dialogDeleteNote(context,delete:(){ref.read(listProvider.notifier).remove(note);});
                           }),
                     ]),
                   ),

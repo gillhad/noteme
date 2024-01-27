@@ -43,6 +43,8 @@
 "dialog_folder_msg":"La carpeta contiene notas, deseas eliminarlas o mantenerlas?",
 "dialog_folder_keep":"Mantener",
 "dialog_add_reminder":"Elige la fecha del recordatiorio",
+"dialog_note_delete":"Eliminar nota",
+"dialog_note_delete_msg":"Deseas eliminar la nota?",
 
 
 "@@_ERRORS":{},

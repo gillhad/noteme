@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+import 'package:noteme/src/models/item_model.dart';
 
 class DialogManager {
 
@@ -42,4 +44,23 @@ dialogAddFolder(context,WidgetRef ref){
       ],
     );
   });
+}
+
+///Dialog for delete note
+///[delete] Function to delete the note if saved in database
+dialogDeleteNote(context, {Function? delete})async{
+  return DialogManager().showCustomDialog(
+      context, title: AL.of(context).dialog_note_delete,
+      content: Text(AL.of(context).dialog_note_delete_msg),
+      onCancel: () {
+        GoRouter.of(context).pop();
+      },
+      onAccept: () {
+        if(delete!=null){
+          delete();
+        }
+        GoRouter.of(context).pop();
+        GoRouter.of(context).pop();
+      },
+      acceptMsg: AL.of(context).delete);
 }

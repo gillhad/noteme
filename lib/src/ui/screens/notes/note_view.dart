@@ -7,6 +7,8 @@ import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/note_model.dart';
+import 'package:noteme/src/utils/dialog_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NoteView extends ConsumerStatefulWidget {
   final NoteClass? note;
@@ -63,16 +65,24 @@ class NoteView extends ConsumerStatefulWidget {
       leading: IconButton(
         padding: EdgeInsets.zero,
         onPressed: (){
-          GoRouter.of(context).pop();
+         dialogSaveNote();
         },
         icon: const Icon(Icons.chevron_left, size: 30,),
       ),
       leadingWidth: 20,
       elevation: 4,
       actions: [
-        _saveNote(ref)
+       if(widget.note==null) _saveNote(ref)
       ],
     );
+  }
+
+  dialogSaveNote() {
+    if (_checkIfEmpty()) {
+      dialogDeleteNote(context);
+    }else{
+      GoRouter.of(context).pop();
+    }
   }
 
   Widget _content(){
@@ -87,15 +97,11 @@ class NoteView extends ConsumerStatefulWidget {
           ),
           child: TextFormField(
             onTap: (){
-              print("tap en el notecontroller");
-              print("_noteController.selection.base.offset");
+
             },
             onChanged: (value){
-              //TODO: guardar la nota cada X tiempo si se hacen cambios
-              print("_noteController.selection.base.offset");
-              print(widget.note);
+             _manageNewTitle();
               if(widget.note!=null){
-                print("update");
                 _updateNote();
               }
             },
@@ -139,17 +145,21 @@ class NoteView extends ConsumerStatefulWidget {
 
   ///FUNCTIONS
    initNote(){
-    print(widget.note);
     if(widget.note!=null){
       currentNote = widget.note;
-      print(currentNote!.content);
-      print(currentNote!.title);
       _titleController.text = currentNote?.title ?? "";
       _noteController.text = currentNote?.content ?? "";
     }
   }
 
-  ///Shows done/edit option
+  _manageNewTitle(){
+    if(_titleController.text.isEmpty&&_noteController.text.trim().length>5){
+      ///Adds a default title if empty
+      _titleController.text = _noteController.text.trim().substring(0,_noteController.text.trim().length) + "...";
+    }
+  }
+
+
   _saveNote(WidgetRef ref){
     return IconButton(onPressed: ()async {
       if(_checkIfEmpty()){
@@ -171,7 +181,7 @@ class NoteView extends ConsumerStatefulWidget {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Debes añadir almenos un título")));
         // GoRouter.of(context).go(routes.mainHolder);
       }
-    }, icon: widget.note !=null ? const Icon(Icons.edit) : const Icon(Icons.save));
+    }, icon: const Icon(Icons.save));
   }
 
   _updateNote(){
@@ -194,8 +204,6 @@ class NoteView extends ConsumerStatefulWidget {
     return false;
   }
 
-  _updatNote(){
 
-  }
 
   }

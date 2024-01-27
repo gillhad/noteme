@@ -289,6 +289,18 @@ abstract class AL {
   /// **'Elige la fecha del recordatiorio'**
   String get dialog_add_reminder;
 
+  /// No description provided for @dialog_note_delete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar nota'**
+  String get dialog_note_delete;
+
+  /// No description provided for @dialog_note_delete_msg.
+  ///
+  /// In es, this message translates to:
+  /// **'Deseas eliminar la nota?'**
+  String get dialog_note_delete_msg;
+
   /// No description provided for @error_empty.
   ///
   /// In es, this message translates to:
