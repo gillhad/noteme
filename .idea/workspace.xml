@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Delete note dialog&#10;- home&#10;- note view">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Update title i notes&#10;- manage empty title&#10;- manage proper udpate">
+      <change afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_color_selection.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/app_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_styles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/app_colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/notes_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/item_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/item_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/note_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/note_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/dialogs/dialog_manager_note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/dialog_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/widgets/notes_views/simple_note.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706358205321</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Update title i notes&#10;- manage empty title&#10;- manage proper udpate">
+      <option name="closed" value="true" />
+      <created>1706526697898</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1706526697899</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -355,7 +364,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create widget for folder and note" />
     <MESSAGE value="create settings view&#10;add settingsmodel" />
     <MESSAGE value="add configuratio view&#10;- dark mode&#10;- light mode" />
     <MESSAGE value="Add create notes view" />
@@ -380,6 +388,7 @@
     <MESSAGE value="Create custome datepicker for adding a reminder to a note&#10;-update note with reminder date" />
     <MESSAGE value="Fix general code (dart fix)&#10;Improve search to folders (show if folder contain note that match)" />
     <MESSAGE value="Delete note dialog&#10;- home&#10;- note view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete note dialog&#10;- home&#10;- note view" />
+    <MESSAGE value="Update title i notes&#10;- manage empty title&#10;- manage proper udpate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update title i notes&#10;- manage empty title&#10;- manage proper udpate" />
   </component>
 </project>

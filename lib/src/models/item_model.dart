@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteme/src/config/app_colors.dart';
 
 import '../utils/time_ manager.dart';
 
@@ -10,18 +11,22 @@ class ItemModel{
   late DateTime creationTime;
   bool pinned = false;
 
-  ItemModel({required this.title, required this.creationTime});
+  ItemModel({required this.title, required this.creationTime, this.color});
 
   ItemModel.fromOther(this.id, this.title, this.updateTime,this.creationTime);
 
   ItemModel.fromJson(json){
     id = json["id"];
     title = json["title"];
-    color = json["color"];
+    if(json["color"]!=null) {
+      color = Color(json["color"]);
+    }
     updateTime =  TimeManager.databaseToDateTime(json["update_time"]);
     creationTime = TimeManager.databaseToDateTime(json["creation_time"])!;
     pinned = json["pinned"] == 1 ? true : false;
   }
+
+  toMap(){}
 
   @override
   String toString() {

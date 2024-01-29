@@ -42,10 +42,10 @@ class AppColors{
   static Color pinkDarkNote = const Color(0xFF000000);
   ///light
   static Color noColor = const Color(0xFF000000);
-  static Color redNote = const Color(0xFF000000);
-  static Color yellowNote = const Color(0xFF000000);
-  static Color blueNote = const Color(0xFF000000);
-  static Color greenNote = const Color(0xFF000000);
-  static Color orangeNote = const Color(0xFF000000);
-  static Color purpleNote = const Color(0xFF000000);
+  static Color redNote = const Color(0xFFC52D2D);
+  static Color yellowNote = const Color(0xFFC0AD36);
+  static Color blueNote = const Color(0xFF264EAB);
+  static Color greenNote = const Color(0xFF5BC930);
+  static Color orangeNote = const Color(0xFFD36C22);
+  static Color purpleNote = const Color(0xFF772BC5);
 }

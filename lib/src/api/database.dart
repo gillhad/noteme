@@ -20,9 +20,9 @@ class DatabaseInfo {
    static onCreateDatabase(Database db) async {
       // print("creamos base de datos");
       await db.execute(
-          'CREATE TABLE folders (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, color TEXT,update_time DATETIME,creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", image TEXT, pinned BOOLEAN DEFAULT "false" NOT NULL, blocked BOOLEAN DEFAULT "false" NOT NULL, password VARCHAR(8))');
+          'CREATE TABLE folders (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, color INTEGER,update_time DATETIME,creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", image TEXT, pinned BOOLEAN DEFAULT "false" NOT NULL, blocked BOOLEAN DEFAULT "false" NOT NULL, password VARCHAR(8))');
       await db.execute(
-          'CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, folder_id INTEGER,title VARCHAR,content TEXT,tag TEXT, color TEXT, icon TEXT,hidden BOOLEAN DEFAULT "false", pinned BOOLEAN DEFAULT "false",background TEXT, reminder_time DATETIME, update_time DATETIME, creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", delete_time DATETIME, FOREIGN KEY (folder_id) REFERENCES folders(id) ON DELETE SET NULL)');
+          'CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, folder_id INTEGER,title VARCHAR,content TEXT,tag TEXT, color INTEGER, icon TEXT,hidden BOOLEAN DEFAULT "false", pinned BOOLEAN DEFAULT "false",background TEXT, reminder_time DATETIME, update_time DATETIME, creation_time DATETIME NOT NULL  DEFAULT "2023-01-01 00:00", delete_time DATETIME, FOREIGN KEY (folder_id) REFERENCES folders(id) ON DELETE SET NULL)');
     }
 
 
@@ -30,10 +30,14 @@ class DatabaseInfo {
       try {
         await db!.insert('notes', note.toMap());
         var newNote = await db!.rawQuery('SELECT * FROM notes ORDER BY id DESC LIMIT 1');
+        print("newNote");
+        print(newNote);
+        print(NoteClass.fromJson(newNote[0]));
         return NoteClass.fromJson(newNote[0]);
-      } catch (e) {
-        // print("no se añade nota");
+      } catch (e,s) {
+        print("no se añade nota");
         print(e);
+        print(s);
         return false;
       }
     }

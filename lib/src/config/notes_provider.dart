@@ -43,6 +43,7 @@ class ItemListState extends StateNotifier<List<ItemModel>>{
   Future add(item)async{
     if(item is NoteClass) {
       var newNote =  await DatabaseInfo.addNewNote(item);
+      print("devuelve una $newNote");
       state.insert(0,newNote);
       }else if(item is Folders){
       var newFolder =  await DatabaseInfo.addNewFolder(item);

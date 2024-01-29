@@ -16,7 +16,7 @@ File? background;
 DateTime? reminderTime;
 DateTime? deleteTime;
 
-NoteClass({required super.title,required this.content, required super.creationTime});
+NoteClass({required super.title,required this.content, required super.creationTime, super.color});
 
 NoteClass.fromJson(json) : super.fromJson(json){
   content = json["content"];  
@@ -35,7 +35,7 @@ toMap(){
     "title":title,
     "content":content,
     "tag":tag,
-    "color":color,
+    "color":color?.value,
     "icon":icon,
     "hidden":hidden ? 1 : 0,
     "pinned":pinned ? 1 : 0,

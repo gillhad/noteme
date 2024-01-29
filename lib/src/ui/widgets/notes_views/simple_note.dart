@@ -30,7 +30,7 @@ Widget noteItem(context,NoteClass note,WidgetRef ref, Function openNote){
         children: [
           Container(
             padding: const EdgeInsets.all(5),
-              child: const Icon(Icons.text_snippet_outlined)),
+              child:  Icon(Icons.text_snippet_outlined, color: note.color,)),
           const SizedBox(width: 10,),
           Expanded(
             flex: 10,

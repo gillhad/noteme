@@ -6,7 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/notes_provider.dart';
+import 'package:noteme/src/models/item_model.dart';
 import 'package:noteme/src/models/note_model.dart';
+import 'package:noteme/src/ui/widgets/dialogs/dialog_color_selection.dart';
 import 'package:noteme/src/utils/dialog_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -25,6 +27,7 @@ class NoteView extends ConsumerStatefulWidget {
   final _noteController = TextEditingController();
 
   Timer? updateTimer;
+  Color? _selectedColor;
 
   late bool _editingTitle = widget.note!=null ? false : true;
 
@@ -45,6 +48,13 @@ print("cambio de title");
     _titleController.dispose();
     _noteController.dispose();
     super.dispose();
+  }
+
+
+  @override
+  void didUpdateWidget(covariant NoteView oldWidget) {
+    print("cambios de widget");
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -159,10 +169,22 @@ print("cambio de title");
 
   ///Changes Color of note
   Widget _changeColor(){
-    return Container(
-      width: 30,
-      height: 30,
-      color: AppColors.noDarkColor,
+    return GestureDetector(
+      onTap: ()async{
+        var response = await colorSelector(context, widget.note);
+        setState(() {
+        if(response!=null && widget.note==null){
+          _selectedColor = response;
+        }
+
+        });
+        print("volvemos de elegir color");
+      },
+      child: Container(
+        width: 30,
+        height: 30,
+        color: _manageColor(),
+      ),
     );
   }
 
@@ -173,6 +195,16 @@ print("cambio de title");
       _titleController.text = currentNote?.title ?? "";
       _noteController.text = currentNote?.content ?? "";
     }
+  }
+
+  _manageColor(){
+    if(widget.note?.color!=null){
+      return widget.note?.color;
+    }
+    else if(_selectedColor!=null){
+      return _selectedColor;
+    }
+    return AppColors.noDarkColor;
   }
 
   _manageNewTitle(){
@@ -186,22 +218,19 @@ print("cambio de title");
   _saveNote(WidgetRef ref){
     return IconButton(onPressed: ()async {
       if(!_checkIfEmpty()){
-        NoteClass newNote = NoteClass(title: _titleController.text, content: _noteController.text, creationTime: DateTime.now());
+        NoteClass newNote = NoteClass(title: _titleController.text, content: _noteController.text, creationTime: DateTime.now(), color: _selectedColor);
         try {
-          if(widget.note!=null){
-            print("update note");
 
-          }else {
             await ref.read(listProvider.notifier).add(newNote);
             GoRouter.of(context).go(routes.mainHolder);
-          }
+
         }catch(e,s){
 
     print(e);
     print(s);
         }
         }else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Debes añadir almenos un título")));
+        ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(AL.of(context).error_no_title)));
         // GoRouter.of(context).go(routes.mainHolder);
       }
     }, icon: const Icon(Icons.save));
@@ -213,8 +242,6 @@ print("cambio de title");
       }
       updateTimer = Timer(const Duration(milliseconds: 500),(){
         widget.note!.updateNote(_titleController.text, _noteController.text);
-        print("se gestriona el update");
-        print(widget.note);
         ref.read(listProvider.notifier).update(widget.note);
       });
     }

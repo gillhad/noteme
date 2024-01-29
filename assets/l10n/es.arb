@@ -48,6 +48,7 @@
 
 
 "@@_ERRORS":{},
-"error_empty":"Este valor es obligatorio"
+"error_empty":"Este valor es obligatorio",
+"error_no_title":"Debes añadir almenos un título"
 
 }
