@@ -32,7 +32,7 @@
 "settings_conf_light":"Activar modo oscuro",
 
 "@@_DIALOGS":{},
-"dialog_add_folder":"Añadir a carpeta",
+"dialog_add_to_folder":"Añadir a carpeta",
 "dialog_move_folder":"Mover de carpeta",
 "dialog_delete":"Eliminar",
 "dialog_reminder":"Añadir recordatorio",

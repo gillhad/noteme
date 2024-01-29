@@ -35,7 +35,7 @@ noteOptionsDialog(context, WidgetRef ref, NoteClass note) {
                             GoRouter.of(context).pop();
                       }),
                       ///OPTION2
-                      optionDialog(text: note.folderId!=null ? AL.of(context).dialog_move_folder : AL.of(context).dialog_add_folder, onPressed: () {
+                      optionDialog(text: note.folderId!=null ? AL.of(context).dialog_move_folder : AL.of(context).dialog_add_to_folder, onPressed: () {
                        showFolders(context, ref,note);
                       }),
 

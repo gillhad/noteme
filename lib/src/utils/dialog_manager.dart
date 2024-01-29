@@ -34,17 +34,7 @@ class DialogManager {
   }
 }
 
-dialogAddFolder(context,WidgetRef ref){
-  return showDialog(context: context, builder: (context){
-    return const AlertDialog(
-      title: Text("Añade un título"),
-      content: Text("el título que pondrás"),
-      actions: [
 
-      ],
-    );
-  });
-}
 
 ///Dialog for delete note
 ///[delete] Function to delete the note if saved in database

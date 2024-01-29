@@ -26,10 +26,17 @@ class NoteView extends ConsumerStatefulWidget {
 
   Timer? updateTimer;
 
+  late bool _editingTitle = widget.note!=null ? false : true;
 
   @override
   void initState() {
     initNote();
+    _titleController.addListener(() {setState(() {
+print("cambio de title");
+    });});
+    _noteController.addListener(() {setState(() {
+
+    });});
     super.initState();
   }
 
@@ -43,6 +50,9 @@ class NoteView extends ConsumerStatefulWidget {
   @override
   Widget build(BuildContext context) {
   return GestureDetector(
+    onTap: (){
+      FocusScope.of(context).focusedChild?.unfocus();
+    },
     child: Scaffold(
       appBar: _appBar(),
       body:  _content(),
@@ -62,7 +72,7 @@ class NoteView extends ConsumerStatefulWidget {
           ],
         ),
       ),
-      leading: IconButton(
+      leading: _editingTitle && widget.note!=null ? Container() : IconButton(
         padding: EdgeInsets.zero,
         onPressed: (){
          dialogSaveNote();
@@ -72,9 +82,21 @@ class NoteView extends ConsumerStatefulWidget {
       leadingWidth: 20,
       elevation: 4,
       actions: [
-       if(widget.note==null) _saveNote(ref)
+       widget.note==null ? _saveNote(ref) : _editTitle()
       ],
     );
+  }
+
+  _editTitle(){
+    return IconButton(onPressed: (){
+      setState(() {
+        if(_editingTitle){
+          _manageNewTitle();
+          _updateNote();
+        }
+        _editingTitle = !_editingTitle;
+      });
+    }, icon: Icon(_editingTitle ? Icons.save : Icons.edit));
   }
 
   dialogSaveNote() {
@@ -124,6 +146,7 @@ class NoteView extends ConsumerStatefulWidget {
         margin: const EdgeInsets.symmetric(vertical: 3),
         child: TextFormField(
           controller: _titleController,
+          enabled: _editingTitle,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 0,bottom: 0,left: 10),
             fillColor: AppColors.secondaryDark,
@@ -155,14 +178,14 @@ class NoteView extends ConsumerStatefulWidget {
   _manageNewTitle(){
     if(_titleController.text.isEmpty&&_noteController.text.trim().length>5){
       ///Adds a default title if empty
-      _titleController.text = _noteController.text.trim().substring(0,_noteController.text.trim().length) + "...";
+      _titleController.text = _noteController.text.trim().substring(0,_noteController.text.trim().length > 5 ? 5 : _noteController.text.trim().length) + "...";
     }
   }
 
 
   _saveNote(WidgetRef ref){
     return IconButton(onPressed: ()async {
-      if(_checkIfEmpty()){
+      if(!_checkIfEmpty()){
         NoteClass newNote = NoteClass(title: _titleController.text, content: _noteController.text, creationTime: DateTime.now());
         try {
           if(widget.note!=null){
@@ -190,7 +213,6 @@ class NoteView extends ConsumerStatefulWidget {
       }
       updateTimer = Timer(const Duration(milliseconds: 500),(){
         widget.note!.updateNote(_titleController.text, _noteController.text);
-
         print("se gestriona el update");
         print(widget.note);
         ref.read(listProvider.notifier).update(widget.note);
@@ -198,7 +220,8 @@ class NoteView extends ConsumerStatefulWidget {
     }
 
   bool _checkIfEmpty(){
-    if(_titleController.text.isNotEmpty){
+      print(_titleController.text);
+    if(_titleController.text.isEmpty){
       return true;
     }
     return false;

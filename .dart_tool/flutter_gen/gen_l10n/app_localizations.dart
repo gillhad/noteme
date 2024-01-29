@@ -223,11 +223,11 @@ abstract class AL {
   /// **'Activar modo oscuro'**
   String get settings_conf_light;
 
-  /// No description provided for @dialog_add_folder.
+  /// No description provided for @dialog_add_to_folder.
   ///
   /// In es, this message translates to:
   /// **'Añadir a carpeta'**
-  String get dialog_add_folder;
+  String get dialog_add_to_folder;
 
   /// No description provided for @dialog_move_folder.
   ///

@@ -35,6 +35,9 @@ ThemeData appTheme(BuildContext context, bool isDarkTheme) {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),

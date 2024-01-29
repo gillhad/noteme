@@ -71,7 +71,7 @@ class ALEs extends AL {
   String get settings_conf_light => 'Activar modo oscuro';
 
   @override
-  String get dialog_add_folder => 'Añadir a carpeta';
+  String get dialog_add_to_folder => 'Añadir a carpeta';
 
   @override
   String get dialog_move_folder => 'Mover de carpeta';
@@ -102,6 +102,12 @@ class ALEs extends AL {
 
   @override
   String get dialog_add_reminder => 'Elige la fecha del recordatiorio';
+
+  @override
+  String get dialog_note_delete => 'Eliminar nota';
+
+  @override
+  String get dialog_note_delete_msg => 'Deseas eliminar la nota?';
 
   @override
   String get error_empty => 'Este valor es obligatorio';
