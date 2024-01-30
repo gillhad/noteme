@@ -139,6 +139,12 @@ abstract class AL {
   /// **'Minuto'**
   String get minute;
 
+  /// No description provided for @send.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar'**
+  String get send;
+
   /// No description provided for @main_title.
   ///
   /// In es, this message translates to:
@@ -223,6 +229,18 @@ abstract class AL {
   /// **'Activar modo oscuro'**
   String get settings_conf_light;
 
+  /// No description provided for @settings_feedback.
+  ///
+  /// In es, this message translates to:
+  /// **'Feedback'**
+  String get settings_feedback;
+
+  /// No description provided for @settings_feedback_msg.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Hola! Gracias por usar NoteMe. Si tienes alguna sugerencia o te has encontrado con algún problema puedes enviarme un mensaje aquí:'**
+  String get settings_feedback_msg;
+
   /// No description provided for @dialog_add_to_folder.
   ///
   /// In es, this message translates to:
@@ -306,6 +324,12 @@ abstract class AL {
   /// In es, this message translates to:
   /// **'Este valor es obligatorio'**
   String get error_empty;
+
+  /// No description provided for @error_no_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Debes añadir almenos un título'**
+  String get error_no_title;
 }
 
 class _ALDelegate extends LocalizationsDelegate<AL> {

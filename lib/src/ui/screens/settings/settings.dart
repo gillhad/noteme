@@ -42,11 +42,11 @@ class _SettingsState extends State<Settings> {
           const Text("Nombre del usuario"),
 const SizedBox(height: 40,),
 _notSwitch(),
-    _settingsOption(AL.of(context).setttings_conf,_navigation),
-    _settingsOption(AL.of(context).settings_theme,_navigation),
-    _settingsOption(AL.of(context).settings_info,_navigation),
-    _settingsOption(AL.of(context).settings_fdb,_navigation),
-    _settingsOption(AL.of(context).delete,_navigation),
+    _settingsOption(AL.of(context).setttings_conf,routes.settingsConf),
+    _settingsOption(AL.of(context).settings_theme,routes.settingsThemes),
+    _settingsOption(AL.of(context).settings_info,routes.settingsInfo),
+    _settingsOption(AL.of(context).settings_fdb,routes.settingsFeedback),
+    _settingsOption(AL.of(context).delete,"delete"),
     //Notificaciones
     //Opciones
     //Temas
@@ -74,7 +74,7 @@ _notSwitch(),
 
   _settingsOption(label,nav){
     return GestureDetector(
-      onTap: nav,
+      onTap:(){ _navigation(nav);},
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 40,
@@ -89,8 +89,16 @@ _notSwitch(),
     );
   }
   
-  _navigation(){
-    GoRouter.of(context).push(routes.settingsConf);
+  _navigation(route){
+    if(route=="delete"){
+      dialogDeleteAll();
+    }else {
+      GoRouter.of(context).push(route);
+    }
+    }
+
+  dialogDeleteAll(){
+
   }
 
 }

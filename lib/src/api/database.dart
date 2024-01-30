@@ -17,6 +17,7 @@ class DatabaseInfo {
     return db;
   }
 
+  ///creates database if does not exist
    static onCreateDatabase(Database db) async {
       // print("creamos base de datos");
       await db.execute(
@@ -26,22 +27,21 @@ class DatabaseInfo {
     }
 
 
+    ///Create a new note & returns the note
    static addNewNote(NoteClass note) async {
       try {
         await db!.insert('notes', note.toMap());
         var newNote = await db!.rawQuery('SELECT * FROM notes ORDER BY id DESC LIMIT 1');
-        print("newNote");
-        print(newNote);
-        print(NoteClass.fromJson(newNote[0]));
         return NoteClass.fromJson(newNote[0]);
       } catch (e,s) {
-        print("no se añade nota");
         print(e);
         print(s);
         return false;
       }
     }
 
+
+    ///Create a new folder and returns the folder
    static addNewFolder(Folders folder) async {
       try {
         await db!.insert('folders', folder.toMap());
@@ -54,6 +54,8 @@ class DatabaseInfo {
       }
     }
 
+
+    ///Add note to a folder
    static noteToFolder(int noteId, int? folderId) async {
       try {
         await db!.update(
@@ -63,6 +65,8 @@ class DatabaseInfo {
       }
     }
 
+
+    ///Delete a note
    static deleteNote(noteId) async {
       try {
         await db!.delete("notes", where: 'id = $noteId');
@@ -71,6 +75,9 @@ class DatabaseInfo {
       }
     }
 
+
+
+    ///Delete a folder
    static deleteFolder(folderId) async {
      try {
        await db!.delete("folders", where: 'id=$folderId');
@@ -79,6 +86,8 @@ class DatabaseInfo {
      }
    }
 
+
+   ///Update a note & return the note updated
    static updateNote(NoteClass note) async{
      try {
        var oldNote = await db!.rawQuery('SELECT * FROM notes WHERE id= ${note.id}');
@@ -94,6 +103,8 @@ class DatabaseInfo {
      }
    }
 
+
+   ///Update a folder
    static updateFolder(folders)async{
      try {
        await db!.update(
@@ -104,8 +115,10 @@ class DatabaseInfo {
      }
    }
 
+
+   ///print current folders and notes
     static getDatabaseInfo() async {
-        print("printar info");
+        print("print info");
         print(await getFolders());
         print(await getNotes());
       }

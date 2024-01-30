@@ -11,8 +11,10 @@ class ItemModel{
   late DateTime creationTime;
   bool pinned = false;
 
+
   ItemModel({required this.title, required this.creationTime, this.color});
 
+  ///Constructor for testing
   ItemModel.fromOther(this.id, this.title, this.updateTime,this.creationTime);
 
   ItemModel.fromJson(json){

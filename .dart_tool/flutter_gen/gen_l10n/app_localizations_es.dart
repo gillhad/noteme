@@ -29,6 +29,9 @@ class ALEs extends AL {
   String get minute => 'Minuto';
 
   @override
+  String get send => 'Enviar';
+
+  @override
   String get main_title => 'NoteMe';
 
   @override
@@ -71,6 +74,12 @@ class ALEs extends AL {
   String get settings_conf_light => 'Activar modo oscuro';
 
   @override
+  String get settings_feedback => 'Feedback';
+
+  @override
+  String get settings_feedback_msg => '¡Hola! Gracias por usar NoteMe. Si tienes alguna sugerencia o te has encontrado con algún problema puedes enviarme un mensaje aquí:';
+
+  @override
   String get dialog_add_to_folder => 'Añadir a carpeta';
 
   @override
@@ -111,4 +120,7 @@ class ALEs extends AL {
 
   @override
   String get error_empty => 'Este valor es obligatorio';
+
+  @override
+  String get error_no_title => 'Debes añadir almenos un título';
 }

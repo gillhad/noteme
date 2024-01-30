@@ -10,6 +10,7 @@
 "year":"Año",
 "hour":"Hora",
 "minute":"Minuto",
+"send":"Enviar",
 
 "@@_MAIN":{},
 "main_title":"NoteMe",
@@ -30,6 +31,8 @@
 "settings_conf_view":"Configurar vista",
 "settings_conf_viewMode":"Activar vista simple",
 "settings_conf_light":"Activar modo oscuro",
+"settings_feedback":"Feedback",
+"settings_feedback_msg":"¡Hola! Gracias por usar NoteMe. Si tienes alguna sugerencia o te has encontrado con algún problema puedes enviarme un mensaje aquí:",
 
 "@@_DIALOGS":{},
 "dialog_add_to_folder":"Añadir a carpeta",
