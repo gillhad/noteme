@@ -4,8 +4,12 @@ class User{
   late String name;
   late String mail;
 
-  UserSettings settings = UserSettings();
+  late UserSettings settings;
 
-
+  User.fromJson(json){
+    name = json['name'];
+    mail = json['mail'];
+    settings = UserSettings.fromJson(json['settings']);
+  }
 
 }

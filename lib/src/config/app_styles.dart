@@ -48,10 +48,10 @@ ThemeData appTheme(BuildContext context, bool isDarkTheme) {
 
 TextTheme textTheme = const TextTheme(
   labelSmall: TextStyle(fontSize: 8, fontWeight: FontWeight.w500),
-  labelMedium: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+  labelMedium: TextStyle(fontSize: 10, fontWeight: FontWeight.w500,height: 1),
   labelLarge: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
   bodySmall: TextStyle(fontSize: 9),
-  bodyMedium: TextStyle(fontSize: 12),
+  bodyMedium: TextStyle(fontSize: 12, height: 1),
   bodyLarge: TextStyle(fontSize: 14),
   headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
   headlineMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),

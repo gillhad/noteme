@@ -199,6 +199,12 @@ abstract class AL {
   /// **'Temas'**
   String get settings_theme;
 
+  /// No description provided for @settings_theme_select_sheet.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige un tema de fondo'**
+  String get settings_theme_select_sheet;
+
   /// No description provided for @settings_info.
   ///
   /// In es, this message translates to:

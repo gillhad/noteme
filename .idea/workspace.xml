@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Add dialog for change note color&#10;Update note with color&#10;show current color">
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_feedback.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_info.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_themes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_gen/gen_l10n/app_localizations_es.dart" afterDir="false" />
+    <list default="true" id="31b1b1fe-4c57-4a51-aff5-1d927161e801" name="Changes" comment="Add feedback view&#10;Add info view&#10;Add themes view">
+      <change afterPath="$PROJECT_DIR$/assets/images/note_theme1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/note_theme2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/utils/sheet_theme_paints.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/l10n/es.arb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/l10n/es.arb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/api/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/api/database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/navigation/navigation_routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/models/item_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/item_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/app_colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/app_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/app_styles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/navigation/assets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/config/assets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/settings_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/settings_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/notes/note_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_themes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/ui/screens/settings/settings_themes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +90,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Projects\noteme\lib\src\config" />
       <recent name="F:\Projects\noteme\lib\src\utils" />
       <recent name="F:\Projects\noteme\lib\src\ui\widgets\notes_views" />
       <recent name="F:\Projects\noteme\lib\src\config\navigation" />
@@ -354,7 +359,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706532302007</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Add feedback view&#10;Add info view&#10;Add themes view">
+      <option name="closed" value="true" />
+      <created>1706610231210</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1706610231210</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -375,7 +388,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add configuratio view&#10;- dark mode&#10;- light mode" />
     <MESSAGE value="Add create notes view" />
     <MESSAGE value="Create notes:&#10;- format title&#10;-add color option&#10;- navigation" />
     <MESSAGE value="Manage notes&#10;- search notes&#10;- route to create new notes&#10;- open folders" />
@@ -400,6 +412,7 @@
     <MESSAGE value="Delete note dialog&#10;- home&#10;- note view" />
     <MESSAGE value="Update title i notes&#10;- manage empty title&#10;- manage proper udpate" />
     <MESSAGE value="Add dialog for change note color&#10;Update note with color&#10;show current color" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add dialog for change note color&#10;Update note with color&#10;show current color" />
+    <MESSAGE value="Add feedback view&#10;Add info view&#10;Add themes view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add feedback view&#10;Add info view&#10;Add themes view" />
   </component>
 </project>

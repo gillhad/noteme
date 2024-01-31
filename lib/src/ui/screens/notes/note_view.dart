@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noteme/src/config/app_colors.dart';
+import 'package:noteme/src/config/app_styles.dart';
+import 'package:noteme/src/config/assets.dart';
 import 'package:noteme/src/config/navigation/navigation_routes.dart';
 import 'package:noteme/src/config/notes_provider.dart';
 import 'package:noteme/src/models/item_model.dart';
@@ -11,6 +13,7 @@ import 'package:noteme/src/models/note_model.dart';
 import 'package:noteme/src/ui/widgets/dialogs/dialog_color_selection.dart';
 import 'package:noteme/src/utils/dialog_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:noteme/src/utils/sheet_theme_paints.dart';
 
 class NoteView extends ConsumerStatefulWidget {
   final NoteClass? note;
@@ -53,7 +56,6 @@ print("cambio de title");
 
   @override
   void didUpdateWidget(covariant NoteView oldWidget) {
-    print("cambios de widget");
     super.didUpdateWidget(oldWidget);
   }
 
@@ -119,28 +121,36 @@ print("cambio de title");
 
   Widget _content(){
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
       physics: const ClampingScrollPhysics(),
       child:
       Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+      width: MediaQuery.of(context).size.width,
+          decoration:  BoxDecoration(
+            color: widget.note!.color,
+            // image: DecorationImage(image:AssetImage(AppAssets.noteTheme1), fit: BoxFit.fitWidth, repeat: ImageRepeat.repeat)
             //TODO: add background/color decoration
           ),
-          child: TextFormField(
-            onTap: (){
+          child: CustomPaint(
+            painter: SheetThemes.getTheme(SheetThemes.none),
+            child: TextFormField(
+              onTap: (){
 
-            },
-            onChanged: (value){
-             _manageNewTitle();
-              if(widget.note!=null){
-                _updateNote();
-              }
-            },
-            controller: _noteController,
-            maxLines: null,
-            decoration: const InputDecoration(
-              focusedBorder: InputBorder.none
+              },
+              onChanged: (value){
+               _manageNewTitle();
+                if(widget.note!=null){
+                  _updateNote();
+                }
+              },
+              scrollPhysics:const  NeverScrollableScrollPhysics(),
+              style: const TextStyle(height: 1.3,color: Colors.white),
+              controller: _noteController,
+              maxLines: null,
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 21,horizontal: 25),
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+              ),
             ),
           )),
     );
@@ -253,7 +263,7 @@ print("cambio de title");
     }
     return false;
   }
-
-
-
   }
+
+
+  
